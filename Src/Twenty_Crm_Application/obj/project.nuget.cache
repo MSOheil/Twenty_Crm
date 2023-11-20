@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "joVXLJUT+HPul8SBE00t0GjNWigS15zaOfvFPpVj4tsrAaQ0oCMP0+E+RDS3/Sk3IMfZJg6ZVtxJGjcdwb9DPg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}
