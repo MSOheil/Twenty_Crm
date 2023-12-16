@@ -1,0 +1,5 @@
+﻿namespace Twenty_Crm_Application.Common.Interfaces.Repositories.InternationalCertificate;
+
+public interface IInternationalCertificateRepository : IGenericRepository<Twenty_Crm_Domain.Entities.InternationalCertificate.InternationalCertificate>
+{
+}
