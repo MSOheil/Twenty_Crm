@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj": {}
+    "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj": {}
   },
   "projects": {
-    "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj": {
+    "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj",
+        "projectUniqueName": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj",
         "projectName": "Twenty_Crm_Application",
-        "projectPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Application\\obj\\",
+        "projectPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj",
+        "packagesPath": "C:\\Users\\FARAD\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\FARAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,15 +22,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Project\\Dotnet\\Twenty_Back_End\\Src\\Twenty_Application": {},
+          "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Back_End\\Src\\Twenty_Application": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj": {
-                "projectPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj"
+              "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj": {
+                "projectPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj"
               }
             }
           }
@@ -64,34 +60,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj": {
+    "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj",
+        "projectUniqueName": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj",
         "projectName": "Twenty_Crm_Domain",
-        "projectPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\obj\\",
+        "projectPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj",
+        "packagesPath": "C:\\Users\\FARAD\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\FARAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,7 +106,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Project\\Dotnet\\Twenty_Back_End\\Src\\Twenty_Application": {},
+          "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Back_End\\Src\\Twenty_Application": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -129,34 +136,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj": {
+    "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj",
+        "projectUniqueName": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj",
         "projectName": "Twenty_Crm_Infratstructure",
-        "projectPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\obj\\",
+        "projectPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\Twenty_Crm_Infratstructure.csproj",
+        "packagesPath": "C:\\Users\\FARAD\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Infratstructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\FARAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -164,18 +182,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Project\\Dotnet\\Twenty_Back_End\\Src\\Twenty_Application": {},
+          "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Back_End\\Src\\Twenty_Application": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj": {
-                "projectPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj"
+              "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj": {
+                "projectPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj"
               },
-              "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj": {
-                "projectPath": "D:\\Project\\Dotnet\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj"
+              "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj": {
+                "projectPath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj"
               }
             }
           }
@@ -219,16 +237,31 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
