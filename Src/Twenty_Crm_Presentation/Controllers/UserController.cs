@@ -1,32 +1,41 @@
-using Microsoft.AspNetCore.Mvc;
-using Twenty_Crm_Application.Common.Interfaces.Services.User;
-using Twenty_Crm_Application.Common.Models.Dto;
-using Twenty_Crm_Application.Common.Models.Dto.User;
-
-namespace Twenty_Crm_Presentation.Controllers;
-
 [ApiController]
 [Route("[controller]/[action]")]
-public class UserController : ControllerBase
+public class UserController : BaseController
 {
     private readonly ILogger<UserController> _logger;
-    private readonly IUserService _userService;
-
+    private readonly IUserService userService;
     public UserController(ILogger<UserController> logger, IUserService userService)
     {
         _logger = logger;
-        _userService = userService;
+        this.userService = userService;
     }
-
-    [HttpGet]
-    public async Task<ActionResult<PaginatedList<ShowUserDto>>> GetUserListAsync([FromQuery] GetWithPagination dto)
+    [HttpGet("{companyRef}")]
+    public async Task<PaginatedList<ShowUserDto>> GetList(Guid companyRef, [FromQuery] GetWithPagination dto)
     {
-        return Ok(await _userService.GetUserByPaginationAsync(dto));
+        return await this.userService.GetUserByPaginationAsync(companyRef, dto);
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateEmployee(Guid id, [FromBody] CreateUserDto dto)
+    public async Task<ResponseDto<ShowUserDto>> Create([FromBody] CreateUserDto dto)
     {
-        return Ok(await _userService.CreateUserAsync(dto));
+        return await this.userService.CreateUserAsync(dto);
     }
+    [HttpPut("{id}")]
+    public async Task<ResponseDto<bool>> Update(Guid id, [FromBody] UpdateUserDto dto)
+    {
+        return await this.userService.UpdateUserAsync(id, dto);
+    }
+    [HttpDelete("{id}")]
+    public async Task<ResponseDto<bool>> Delete(Guid id, string userPhone)
+    {
+        return await this.userService.DeleteUserAsync(id, userPhone);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ShowUserDto> GetById(Guid id)
+    {
+        return await this.userService.GetByIdAsync(id);
+    }
+
+
 }

@@ -8,9 +8,9 @@ public class CompanyToUserConfiguration : IEntityTypeConfiguration<Twenty_Crm_Do
         builder.Property(z => z.ModifiedBy).HasMaxLength(140);
 
 
-        builder.HasOne(z => z.User)
-            .WithMany(z => z.CompanyToUsers)
-            .HasForeignKey(z => z.UserRef).IsRequired(true);
+        //builder.HasOne(z => z.User)
+        //    .WithMany(z => z.CompanyToUsers)
+        //    .HasForeignKey(z => z.UserRef).IsRequired(true);
 
 
         builder.HasOne(z => z.Company)

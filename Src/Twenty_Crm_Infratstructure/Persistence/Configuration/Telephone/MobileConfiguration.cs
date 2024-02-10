@@ -10,10 +10,7 @@ public class MobileConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.En
 
         builder.Property(b => b.PhoneNumber).HasMaxLength(30);
 
-
-        builder.HasOne(b => b.User)
-            .WithMany(b => b.Mobiles)
-                .HasForeignKey(z => z.UserRef).IsRequired(false).OnDelete(DeleteBehavior.NoAction);
+         
 
         builder.HasOne(b => b.Operator)
             .WithMany(b => b.Mobiles)

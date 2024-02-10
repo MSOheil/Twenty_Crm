@@ -1,13 +1,13 @@
 ﻿namespace Twenty_Crm_Domain.Entities.Contact;
-
 public class Telephone : BaseEntity
 {
     #region Properties
-    public Guid UserRef { get; set; }
+    public MobileType MobileType { get; set; }
+    public Guid? UserRef { get; set; }
     public string? Title { get; set; }
     public string? TelephoneNumber { get; set; }
-    public Guid OperatorRef { get; set; }
-    public Guid CityRef { get; set; }
+    public Guid? OperatorRef { get; set; }
+    public Guid? CityRef { get; set; }
 
     #endregion
 

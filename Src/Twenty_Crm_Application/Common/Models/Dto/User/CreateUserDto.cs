@@ -20,4 +20,5 @@ public class CreateUserDto
     public string? ProfileImage { get; set; }
     public string? PersonalCode { get; set; }
     public Guid? ReligionRef { get; set; }
+    public Guid? CompanyRef { get; set; }
 }

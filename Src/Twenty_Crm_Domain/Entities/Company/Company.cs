@@ -23,8 +23,6 @@ public class Company : BaseEntity
     public Twenty_Crm_Domain.Entities.Title.Title? Title { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.Address.Address>? Addresses { get; private set; }
     public IList<Telephone>? Telephones { get; private set; }
-    public IList<Mobile>? Mobiles { get; private set; }
-    public IList<Twenty_Crm_Domain.Entities.User.User>? Users { get; private set; }
     public IList<CompanyToCustomer>? CompanyToCustomer { get; set; }
     public IList<CompanyToCustomer>? CustomerToCompany { get; set; }
     public IList<CompanyToUser>? CompanyToUser { get; set; }

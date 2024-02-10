@@ -1,5 +1,4 @@
 ﻿namespace Twenty_Crm_Domain.Entities.Skill;
-
 public class Skill : BaseEntity
 {
     #region Properties
@@ -9,7 +8,8 @@ public class Skill : BaseEntity
     /// <summary>
     /// Certificate file stors base64
     /// </summary>
-    public string? Base64CertificateFile { get; set; }
+    public string? CertificateFileAddress { get; set; }
+    public FileType FileType { get; set; }
     #endregion
 
     #region Relations

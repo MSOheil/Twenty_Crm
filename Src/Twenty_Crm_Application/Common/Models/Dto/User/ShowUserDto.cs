@@ -12,7 +12,6 @@ public class ShowUserDto
     public string? EmailAddress { get; set; }
     public bool Housing { get; set; }
     public string? Password { get; set; }
-    public string? Email { get; set; }
     public string? RefreshToken { get; set; }
     public DateTime RefreshTokenExpire { get; set; }
     public long? DateOfBirth { get; set; }
