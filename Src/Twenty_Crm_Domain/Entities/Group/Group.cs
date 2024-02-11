@@ -1,15 +1,15 @@
 ﻿namespace Twenty_Crm_Domain.Entities.Group;
 
-public class GroupLeader : BaseEntity
+public class Group : BaseEntity
 {
     #region Properties
-    public Guid UserRef { get; set; }
     public string? Name { get; set; }
     public string? Description { get; set; }
+    public Guid? CreatedCompany { get; set; }
     #endregion
 
     #region Realations
-    public Twenty_Crm_Domain.Entities.User.User? User { get; set; }
+    public IList<Twenty_Crm_Domain.Entities.Group.UserToGroup>? UserToGroups { get; set; }
     public IList<SubGroup>? SubGroups { get; set; }
     #endregion
 }

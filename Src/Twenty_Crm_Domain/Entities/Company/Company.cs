@@ -22,7 +22,7 @@ public class Company : BaseEntity
     #region Relations
     public Twenty_Crm_Domain.Entities.Title.Title? Title { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.Address.Address>? Addresses { get; private set; }
-    public IList<Telephone>? Telephones { get; private set; }
+    public IList<Twenty_Crm_Domain.Entities.Telephone.Telephone>? Telephones { get; private set; }
     public IList<CompanyToCustomer>? CompanyToCustomer { get; set; }
     public IList<CompanyToCustomer>? CustomerToCompany { get; set; }
     public IList<CompanyToUser>? CompanyToUser { get; set; }

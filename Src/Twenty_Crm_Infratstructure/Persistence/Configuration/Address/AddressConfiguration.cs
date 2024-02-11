@@ -31,6 +31,6 @@ public class AddressConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.E
 
         builder.HasOne(b => b.City)
              .WithMany(z => z.Addresses)
-             .HasForeignKey(z => z.CityRef).IsRequired(true);
+             .HasForeignKey(z => z.CityRef).IsRequired(false).OnDelete(DeleteBehavior.NoAction);
     }
 }

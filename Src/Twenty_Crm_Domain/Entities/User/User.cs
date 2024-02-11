@@ -10,10 +10,10 @@ public class User : BaseEntity
     public string? NationalCode { get; set; }
     public DateTime BirthDay { get; set; }
     public string? EmailAddress { get; set; }
-    public bool Housing { get; set; }
+    public bool Housing { get; set; } 
     public Guid? CreatedCompany { get; set; }
     /// <summary>
-    /// رمز یا همون کلید پرسونلی
+    /// رمز یا کد پرسونلی که به شکل hash ذخیره میشود
     /// </summary>
     public string? HashedPassword { get; set; }
     public string? RefreshToken { get; set; }
@@ -21,7 +21,6 @@ public class User : BaseEntity
     public long? DateOfBirth { get; set; }
     public Guid? PayerId { get; set; }
     public string? ProfileImage { get; set; }
-    public string? PersonalCode { get; set; }
     public Guid? CompanyCreated { get; set; }
     //public Guid? GroupLeaderRef { get; set; }
     //public Guid? PassportRef { get; set; }
@@ -36,15 +35,15 @@ public class User : BaseEntity
     public IList<Twenty_Crm_Domain.Entities.Website.Website>? Websites { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.Address.Address>? Addresses { get; private set; }
     public IList<BankAccount>? BankAccounts { get; private set; }
-    public IList<Twenty_Crm_Domain.Entities.Group.GroupLeader>? GroupLeaders { get; private set; }
+    public IList<Twenty_Crm_Domain.Entities.Group.Group>? GroupLeaders { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.InternationalCertificate.InternationalCertificate>? InternationalCertificates { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.License.License>? Licenses { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.Marriage.Marriage>? Marriages { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.Passport.Passport>? Passports { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.User.UserBodyInformation>? UserBodyInformations { get; private set; }
     public Twenty_Crm_Domain.Entities.Religion.Religion? Religions { get; private set; }
-    public IList<Twenty_Crm_Domain.Entities.Group.SubGroup>? SubGroups { get; set; }
-    public IList<Telephone>? Telephones { get; set; }
+    public IList<Twenty_Crm_Domain.Entities.Group.UserToGroup>? UserToGroups { get; set; }
+    public IList<Twenty_Crm_Domain.Entities.Telephone.Telephone>? Telephones { get; set; }
     //public IList<CompanyToUser>? CompanyToUsers { get; set; }
 
     #endregion

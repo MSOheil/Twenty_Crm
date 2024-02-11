@@ -1,6 +1,6 @@
 ﻿namespace Twenty_Crm_Infratstructure.Persistence.Repositories.Contact;
 
-public class OperatorRepository : GenericRepository<Twenty_Crm_Domain.Entities.Contact.Operator>, IOperatorRepository
+public class OperatorRepository : GenericRepository<Twenty_Crm_Domain.Entities.Telephone.Operator>, IOperatorRepository
 {
     private readonly IApplicationDbContext db;
 

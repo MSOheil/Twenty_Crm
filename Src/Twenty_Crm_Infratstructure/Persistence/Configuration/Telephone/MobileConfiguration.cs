@@ -1,8 +1,8 @@
 ﻿namespace Twenty_Crm_Infratstructure.Persistence.Configuration.Contact;
 
-public class MobileConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.Entities.Contact.Mobile>
+public class MobileConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.Entities.Telephone.Mobile>
 {
-    public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Contact.Mobile> builder)
+    public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Telephone.Mobile> builder)
     {
         builder.Property(z => z.CreatedBy).HasMaxLength(140);
         builder.Property(z => z.ModifiedBy).HasMaxLength(140);

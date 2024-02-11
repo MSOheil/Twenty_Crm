@@ -8,17 +8,29 @@ public class PhoneNumberService : IPhoneNumberService
         this.phoneNumberRepo = phoneNumberRepo;
     }
 
-    public Task<ResponseDto<ShowPhoneNumberDto>> CreatePhoneNumberDtoAsync(CreatePhoneNumberDto dto)
+    public async Task<ResponseDto<bool>> CreateManyPhoneNumberDtoAsync(Guid userRef, IList<CreatePhoneNumberDto> dto)
     {
-        return default;
         try
         {
+            var phoneNumbers = new List<Twenty_Crm_Domain.Entities.Telephone.Mobile>();
+            for (int i = 0; i < dto.Count; i++)
+            {
+                phoneNumbers.Add(new Twenty_Crm_Domain.Entities.Telephone.Mobile
+                {
+                    Title = dto[i].Title,
+                    PhoneNumber = dto[i].PhoneNumber,
+                    UserRef = userRef,
+                });
+            }
+            await this.phoneNumberRepo.AddRangeAsync(phoneNumbers);
 
+            return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
+                , 200, true);
         }
         catch (Exception ex)
         {
-
-            throw;
+            return new ResponseDto<bool>("ثبت اطلاعات با خطا مواجه شد"
+               , 500, false);
         }
     }
 }

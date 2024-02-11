@@ -1,4 +1,4 @@
-﻿namespace Twenty_Crm_Domain.Entities.Contact;
+﻿namespace Twenty_Crm_Domain.Entities.Telephone;
 
 public class Mobile : BaseEntity
 {

@@ -1,40 +1,43 @@
-﻿using Twenty_Crm_Domain.Entities.User;
-
-namespace Twenty_Crm_Application.Common.Services.User;
+﻿namespace Twenty_Crm_Application.Common.Services.User;
 public class UserService : IUserService
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IUserRepository userRepository;
+    private readonly IUserToGroupService userToGroupService;
     private readonly ILogger<UserService> logger;
-    public UserService(IUserRepository userRepository, ILogger<UserService> logger)
+    public UserService(IUserRepository userRepository, ILogger<UserService> logger, IUserToGroupService userToGroupService)
     {
         this.logger = logger;
-        _userRepository = userRepository;
+        this.userRepository = userRepository;
+        this.userToGroupService = userToGroupService;
     }
 
     public async Task<ResponseDto<ShowUserDto>> CreateUserAsync(CreateUserDto dto)
     {
         try
         {
-            var user = await _userRepository.CreateAsync(new Twenty_Crm_Domain.Entities.User.User
+            var user = await userRepository.CreateAsync(new Twenty_Crm_Domain.Entities.User.User
             {
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 FatherName = dto.FatherName,
                 Gender = dto.Gender,
                 NationalCode = dto.NationalCode,
-                BirthDay = dto.BirthDay,
+                BirthDay = dto.BirthDay ?? DateTime.Now,
                 EmailAddress = dto.EmailAddress,
                 Housing = dto.Housing,
-                HashedPassword = dto.Password,
                 RefreshToken = dto.RefreshToken,
-                RefreshTokenExpire = dto.RefreshTokenExpire,
+                RefreshTokenExpire = dto.RefreshTokenExpire ?? DateTime.Now,
                 DateOfBirth = dto.DateOfBirth,
-                PayerId = dto.PayerId,
                 ProfileImage = dto.ProfileImage,
-                PersonalCode = dto.PersonalCode,
                 ReligionRef = dto.ReligionRef
+                ,
+                CompanyCreated = dto.CompanyRef,
+            }, dto.FirstName);
+            if(dto.GroupList!=null&& dto.GroupList.Count > 0)
+            {
 
-            }, dto.UserName);
+            var createUserToGroup = await this.userToGroupService.CreateManyUserToGroupAsync(dto.GroupList, user.Id);
+            }
             return new ResponseDto<ShowUserDto>("ثبت نام موفقیت امیز بود", 200, new ShowUserDto
             {
                 Id = user.Id,
@@ -55,11 +58,11 @@ public class UserService : IUserService
     {
         try
         {
-            var user = await this._userRepository.GetByIdAsync(id);
+            var user = await this.userRepository.GetByIdAsync(id);
 
             if (user is not null)
             {
-                await this._userRepository.DeleteAsync(id, userActionName);
+                await this.userRepository.DeleteAsync(id, userActionName);
 
                 return new ResponseDto<bool>("حذف کاربر با موفقیت انجام شد"
                     , 200, true);
@@ -83,7 +86,7 @@ public class UserService : IUserService
 
     public async Task<ShowUserDto> GetByIdAsync(Guid id)
     {
-        var data = await this._userRepository.GetAll()
+        var data = await this.userRepository.GetAll()
             .Where(b => b.Id.Equals(id))
                 .Select(b => new ShowUserDto
                 {
@@ -99,7 +102,7 @@ public class UserService : IUserService
 
     public Task<PaginatedList<ShowUserDto>> GetUserByPaginationAsync(Guid companyRef, GetWithPagination dto)
     {
-        return _userRepository.GetAll()
+        var data = userRepository.GetAll()
             .Where(b => b.CompanyCreated.Equals(companyRef)).Select(b => new ShowUserDto
             {
                 FirstName = b.FirstName,
@@ -116,9 +119,9 @@ public class UserService : IUserService
                 DateOfBirth = b.DateOfBirth,
                 PayerId = b.PayerId,
                 ProfileImage = b.ProfileImage,
-                PersonalCode = b.PersonalCode,
                 ReligionRef = b.ReligionRef
             }).PaginatedListAsync(dto.PageNumber, dto.PageSize);
+        return data;
     }
 
     public async Task<ResponseDto<bool>> UpdateUserAsync(Guid userId, UpdateUserDto dto)
@@ -126,7 +129,7 @@ public class UserService : IUserService
         try
         {
 
-            var user = await this._userRepository.GetByIdAsync(userId);
+            var user = await this.userRepository.GetByIdAsync(userId);
 
 
             if (user is not null)
@@ -137,7 +140,7 @@ public class UserService : IUserService
 
 
 
-                await this._userRepository.UpdateAsync(user, dto.UserActionName ?? string.Empty);
+                await this.userRepository.UpdateAsync(user, dto.UserActionName ?? string.Empty);
 
 
                 return new ResponseDto<bool>("ویرایش اطلاعات با موفقیت انجام شد"

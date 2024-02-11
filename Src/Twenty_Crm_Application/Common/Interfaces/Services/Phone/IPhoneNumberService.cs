@@ -1,5 +1,5 @@
 ﻿namespace Twenty_Crm_Application.Common.Interfaces.Services.Phone;
 public interface IPhoneNumberService
 {
-    Task<ResponseDto<ShowPhoneNumberDto>> CreatePhoneNumberDtoAsync(CreatePhoneNumberDto dto);
+    Task<ResponseDto<bool>> CreateManyPhoneNumberDtoAsync(Guid userRef, IList<CreatePhoneNumberDto> dto);
 }

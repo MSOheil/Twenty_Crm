@@ -37,21 +37,6 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.ToTable("PostUser");
                 });
 
-            modelBuilder.Entity("SubGroupUser", b =>
-                {
-                    b.Property<Guid>("SubGroupsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("SubGroupsId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("SubGroupUser");
-                });
-
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Address.Address", b =>
                 {
                     b.Property<Guid>("Id")
@@ -68,7 +53,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Property<int>("BaseStatus")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("CityRef")
+                    b.Property<Guid?>("CityRef")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CompanyId")
@@ -103,6 +88,9 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Property<string>("RegionOrVilageName")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid?>("SBCityRef")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Street")
                         .HasMaxLength(150)
@@ -157,12 +145,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Banks");
                 });
@@ -422,6 +405,9 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("UserRef")
                         .HasColumnType("uniqueidentifier");
 
@@ -429,12 +415,12 @@ namespace Twenty_Crm_Infratstructure.Migrations
 
                     b.HasIndex("CompanyRef");
 
-                    b.HasIndex("UserRef");
+                    b.HasIndex("UserId");
 
                     b.ToTable("CompanyToUsers");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Mobile", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.Group", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -443,9 +429,6 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Property<int>("BaseStatus")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -453,56 +436,8 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasMaxLength(140)
                         .HasColumnType("nvarchar(140)");
 
-                    b.Property<string>("ModifiedBy")
-                        .HasMaxLength(140)
-                        .HasColumnType("nvarchar(140)");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("OperatorRef")
+                    b.Property<Guid?>("CreatedCompany")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserRef")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("OperatorRef");
-
-                    b.HasIndex("UserRef");
-
-                    b.ToTable("Mobiles");
-                });
-
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Operator", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("BaseStatus")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CompanyName")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(140)
-                        .HasColumnType("nvarchar(140)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(400)
@@ -519,108 +454,12 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Operators");
-                });
-
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Telephone", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("BankBranchId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("BaseStatus")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("CityRef")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(140)
-                        .HasColumnType("nvarchar(140)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasMaxLength(140)
-                        .HasColumnType("nvarchar(140)");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("OperatorRef")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TelephoneNumber")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserRef")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BankBranchId");
-
-                    b.HasIndex("CityRef");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("OperatorRef");
-
-                    b.HasIndex("UserRef");
-
-                    b.ToTable("Telephones");
-                });
-
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.GroupLeader", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("BaseStatus")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(140)
-                        .HasColumnType("nvarchar(140)");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(400)
-                        .HasColumnType("nvarchar(400)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasMaxLength(140)
-                        .HasColumnType("nvarchar(140)");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<Guid>("UserRef")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserRef");
+                    b.HasIndex("UserId");
 
                     b.ToTable("GroupLeaders");
                 });
@@ -656,6 +495,44 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.HasIndex("GroupLeaderRef");
 
                     b.ToTable("SubGroups");
+                });
+
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.UserToGroup", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("BaseStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<Guid?>("GropuRef")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("UserRef")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GropuRef");
+
+                    b.HasIndex("UserRef");
+
+                    b.ToTable("UserToGroup");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.InternationalCertificate.InternationalCertificate", b =>
@@ -1095,11 +972,107 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Base64CertificateFile")
+                    b.Property<int>("BaseStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CertificateFileAddress")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<int>("FileType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<Guid>("UserRef")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserRef");
+
+                    b.ToTable("Skills");
+                });
+
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Mobile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("BaseStatus")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("OperatorRef")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserRef")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperatorRef");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Mobiles");
+                });
+
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Operator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("BaseStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CompanyName")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -1123,14 +1096,73 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<Guid>("UserRef")
+                    b.HasKey("Id");
+
+                    b.ToTable("Operators");
+                });
+
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Telephone", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("BankBranchId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("BaseStatus")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("CityRef")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(140)
+                        .HasColumnType("nvarchar(140)");
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("OperatorRef")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PrePhoneNumber")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("TelephoneNumber")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UserRef")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BankBranchId");
+
+                    b.HasIndex("CityRef");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("OperatorRef");
+
                     b.HasIndex("UserRef");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Telephones");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Title.Title", b =>
@@ -1288,7 +1320,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Property<DateTime>("BirthDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("CompanyId")
+                    b.Property<Guid?>("CompanyCreated")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateDate")
@@ -1298,31 +1330,37 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasMaxLength(140)
                         .HasColumnType("nvarchar(140)");
 
+                    b.Property<Guid?>("CreatedCompany")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<long?>("DateOfBirth")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("FatherName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("FirstName")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(170)
+                        .HasColumnType("nvarchar(170)");
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.Property<string>("HashedPassword")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<bool>("Housing")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(170)
+                        .HasColumnType("nvarchar(170)");
 
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(140)
@@ -1335,20 +1373,16 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
 
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid?>("PayerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PersonalCode")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProfileImage")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
 
                     b.Property<string>("RefreshToken")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("RefreshTokenExpire")
                         .HasColumnType("datetime2");
@@ -1356,11 +1390,14 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Property<Guid?>("ReligionRef")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SubGroupId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyId");
-
                     b.HasIndex("ReligionRef");
+
+                    b.HasIndex("SubGroupId");
 
                     b.ToTable("Users");
                 });
@@ -1558,21 +1595,6 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SubGroupUser", b =>
-                {
-                    b.HasOne("Twenty_Crm_Domain.Entities.Group.SubGroup", null)
-                        .WithMany()
-                        .HasForeignKey("SubGroupsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Address.Address", b =>
                 {
                     b.HasOne("Twenty_Crm_Domain.Entities.Address.Address", null)
@@ -1582,8 +1604,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.HasOne("Twenty_Crm_Domain.Entities.Region.City", "City")
                         .WithMany("Addresses")
                         .HasForeignKey("CityRef")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("Twenty_Crm_Domain.Entities.Company.Company", null)
                         .WithMany("Addresses")
@@ -1610,13 +1631,6 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Navigation("County");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Bank.Bank", b =>
-                {
-                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", null)
-                        .WithMany("Banks")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Bank.BankAccount", b =>
@@ -1692,87 +1706,44 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .IsRequired();
 
                     b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
-                        .WithMany("CompanyToUsers")
-                        .HasForeignKey("UserRef")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Company");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Mobile", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.Group", b =>
                 {
-                    b.HasOne("Twenty_Crm_Domain.Entities.Company.Company", null)
-                        .WithMany("Mobiles")
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("Twenty_Crm_Domain.Entities.Contact.Operator", "Operator")
-                        .WithMany("Mobiles")
-                        .HasForeignKey("OperatorRef")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
-                        .WithMany("Mobiles")
-                        .HasForeignKey("UserRef")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Operator");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Telephone", b =>
-                {
-                    b.HasOne("Twenty_Crm_Domain.Entities.Bank.BankBranch", null)
-                        .WithMany("Telephones")
-                        .HasForeignKey("BankBranchId");
-
-                    b.HasOne("Twenty_Crm_Domain.Entities.Region.City", "City")
-                        .WithMany("Telephones")
-                        .HasForeignKey("CityRef")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("Twenty_Crm_Domain.Entities.Company.Company", null)
-                        .WithMany("Telephones")
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("Twenty_Crm_Domain.Entities.Contact.Operator", "Operator")
-                        .WithMany("Telephones")
-                        .HasForeignKey("OperatorRef")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
-                        .WithMany("Telephones")
-                        .HasForeignKey("UserRef")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("City");
-
-                    b.Navigation("Operator");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.GroupLeader", b =>
-                {
-                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
+                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", null)
                         .WithMany("GroupLeaders")
-                        .HasForeignKey("UserRef")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("User");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.SubGroup", b =>
                 {
-                    b.HasOne("Twenty_Crm_Domain.Entities.Group.GroupLeader", "GroupLeader")
+                    b.HasOne("Twenty_Crm_Domain.Entities.Group.Group", "GroupLeader")
                         .WithMany("SubGroups")
                         .HasForeignKey("GroupLeaderRef")
                         .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("GroupLeader");
+                });
+
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.UserToGroup", b =>
+                {
+                    b.HasOne("Twenty_Crm_Domain.Entities.Group.Group", "Group")
+                        .WithMany("UserToGroups")
+                        .HasForeignKey("GropuRef");
+
+                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
+                        .WithMany("UserToGroups")
+                        .HasForeignKey("UserRef");
+
+                    b.Navigation("Group");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.InternationalCertificate.InternationalCertificate", b =>
@@ -1859,6 +1830,54 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Mobile", b =>
+                {
+                    b.HasOne("Twenty_Crm_Domain.Entities.Telephone.Operator", "Operator")
+                        .WithMany("Mobiles")
+                        .HasForeignKey("OperatorRef")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Operator");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Telephone", b =>
+                {
+                    b.HasOne("Twenty_Crm_Domain.Entities.Bank.BankBranch", null)
+                        .WithMany("Telephones")
+                        .HasForeignKey("BankBranchId");
+
+                    b.HasOne("Twenty_Crm_Domain.Entities.Region.City", "City")
+                        .WithMany("Telephones")
+                        .HasForeignKey("CityRef")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Twenty_Crm_Domain.Entities.Company.Company", null)
+                        .WithMany("Telephones")
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("Twenty_Crm_Domain.Entities.Telephone.Operator", "Operator")
+                        .WithMany("Telephones")
+                        .HasForeignKey("OperatorRef")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
+                        .WithMany("Telephones")
+                        .HasForeignKey("UserRef")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("City");
+
+                    b.Navigation("Operator");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Title.Title", b =>
                 {
                     b.HasOne("Twenty_Crm_Domain.Entities.Company.Company", "Company")
@@ -1890,15 +1909,13 @@ namespace Twenty_Crm_Infratstructure.Migrations
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.User.User", b =>
                 {
-                    b.HasOne("Twenty_Crm_Domain.Entities.Company.Company", "Company")
-                        .WithMany("Users")
-                        .HasForeignKey("CompanyId");
-
                     b.HasOne("Twenty_Crm_Domain.Entities.Religion.Religion", "Religions")
                         .WithMany("Users")
                         .HasForeignKey("ReligionRef");
 
-                    b.Navigation("Company");
+                    b.HasOne("Twenty_Crm_Domain.Entities.Group.SubGroup", null)
+                        .WithMany("User")
+                        .HasForeignKey("SubGroupId");
 
                     b.Navigation("Religions");
                 });
@@ -2001,29 +2018,25 @@ namespace Twenty_Crm_Infratstructure.Migrations
 
                     b.Navigation("CustomerToCompany");
 
-                    b.Navigation("Mobiles");
-
                     b.Navigation("Telephones");
 
                     b.Navigation("Title");
-
-                    b.Navigation("Users");
 
                     b.Navigation("Websites");
 
                     b.Navigation("WorkPlaces");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Operator", b =>
-                {
-                    b.Navigation("Mobiles");
-
-                    b.Navigation("Telephones");
-                });
-
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.GroupLeader", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.Group", b =>
                 {
                     b.Navigation("SubGroups");
+
+                    b.Navigation("UserToGroups");
+                });
+
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.SubGroup", b =>
+                {
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Region.City", b =>
@@ -2057,6 +2070,13 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Operator", b =>
+                {
+                    b.Navigation("Mobiles");
+
+                    b.Navigation("Telephones");
+                });
+
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.User.Claim", b =>
                 {
                     b.Navigation("RoleToClaims");
@@ -2075,10 +2095,6 @@ namespace Twenty_Crm_Infratstructure.Migrations
 
                     b.Navigation("BankAccounts");
 
-                    b.Navigation("Banks");
-
-                    b.Navigation("CompanyToUsers");
-
                     b.Navigation("GroupLeaders");
 
                     b.Navigation("InternationalCertificates");
@@ -2087,8 +2103,6 @@ namespace Twenty_Crm_Infratstructure.Migrations
 
                     b.Navigation("Marriages");
 
-                    b.Navigation("Mobiles");
-
                     b.Navigation("Passports");
 
                     b.Navigation("Skills");
@@ -2096,6 +2110,8 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Navigation("Telephones");
 
                     b.Navigation("UserBodyInformations");
+
+                    b.Navigation("UserToGroups");
 
                     b.Navigation("UserToRole");
 

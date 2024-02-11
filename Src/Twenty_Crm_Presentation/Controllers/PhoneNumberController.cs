@@ -11,11 +11,11 @@ public class PhoneNumberController : BaseController
     }
 
 
-    [HttpPost]
-    public async Task<ResponseDto<ShowPhoneNumberDto>> Create([FromBody] dynamic dto)
+    [HttpPost("{userRef}")]
+    public async Task<ResponseDto<bool>> CreateMany(Guid userRef, [FromBody] IList<Twenty_Crm_Application.Common.Models.Dto.PhoneNumber.CreatePhoneNumberDto> dto)
     {
-        return default;
-        //return await this.phoneNumberService.cre
+        return await
+               this.phoneNumberService.CreateManyPhoneNumberDtoAsync(userRef,dto);
 
     }
 }

@@ -3,9 +3,9 @@
 public enum GenderType
 {
     [Display(Name = "مرد")]
-    Male,
+    Male=1,
     [Display(Name = "زن")]
-    Female,
+    Female=2,
     [Display(Name = "نامشخص")]
-    Unknown,
+    Unknown=3,
 }

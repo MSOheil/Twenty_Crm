@@ -1,9 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Twenty_Crm_Infratstructure.Persistence.Db;
-using Twenty_Crm_Infratstructure.Persistence.Repositories.PhoneNumber;
-
-namespace Twenty_Crm_Infratstructure;
+﻿namespace Twenty_Crm_Infratstructure;
 public static class ConfigureServices
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services
@@ -19,7 +14,7 @@ public static class ConfigureServices
         services.AddScoped<IMobileRepository, MobileRepository>();
         services.AddScoped<IOperatorRepository, OperatorRepository>();
         services.AddScoped<ITelephoneRepository, TelephoneRepository>();
-        services.AddScoped<IGroupLeaderRepository, GroupLeaderRepository>();
+        services.AddScoped<IGroupRepository, GroupRepository>();
         services.AddScoped<ISubGroupRepository, SubGroupRepository>();
         services.AddScoped<IInternationalCertificateRepository, InternationalCertificateRepository>();
         services.AddScoped<ILicenseRepository, LicenseRepository>();
@@ -42,6 +37,7 @@ public static class ConfigureServices
         services.AddScoped<IWebsiteRepository, WebsiteRepository>();
         services.AddScoped<IWorkPlaceRepository, WorkPlaceRepository>();
         services.AddScoped<IPhoneNumberRepo, PhoneNumberRepo>();
+        services.AddScoped<IUserToGroupRepo, UserToGroupRepo>();
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         #region  dbContext
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());

@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Twenty_Crm_Application;
 using Twenty_Crm_Infratstructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 //builder.Services.AddApplcationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddApplcationServices();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 #region Swagger

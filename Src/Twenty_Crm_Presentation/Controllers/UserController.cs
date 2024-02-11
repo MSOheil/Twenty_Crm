@@ -1,5 +1,3 @@
-[ApiController]
-[Route("[controller]/[action]")]
 public class UserController : BaseController
 {
     private readonly ILogger<UserController> _logger;
@@ -25,10 +23,10 @@ public class UserController : BaseController
     {
         return await this.userService.UpdateUserAsync(id, dto);
     }
-    [HttpDelete("{id}")]
-    public async Task<ResponseDto<bool>> Delete(Guid id, string userPhone)
+    [HttpDelete("{id}/{userPersonalCode}")]
+    public async Task<ResponseDto<bool>> Delete(Guid id, string userPersonalCode)
     {
-        return await this.userService.DeleteUserAsync(id, userPhone);
+        return await this.userService.DeleteUserAsync(id, userPersonalCode);
     }
 
     [HttpGet("{id}")]

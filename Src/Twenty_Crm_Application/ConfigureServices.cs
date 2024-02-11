@@ -15,7 +15,7 @@ public static class ConfigureServices
         services.AddScoped<IMobileService, MobileService>();
         services.AddScoped<IOperatorService, OperatorService>();
         services.AddScoped<ITelephoneService, TelephoneService>();
-        services.AddScoped<IGroupLeaderService, GroupLeaderService>();
+        services.AddScoped<IGroupService, GroupService>();
         services.AddScoped<ISubGroupService, SubGroupService>();
         services.AddScoped<IInternationalCertificateService, InternationalCertificateService>();
         services.AddScoped<ILicenseService, LicenseService>();
@@ -37,11 +37,8 @@ public static class ConfigureServices
         services.AddScoped<IRoleToClaimsService, RoleToClaimsService>();
         services.AddScoped<IWebsiteService, WebsiteService>();
         services.AddScoped<IWorkPlaceService, WorkPlaceService>();
-        #endregion
-        #region Repositories
-
-        #endregion
-
+        services.AddScoped<IUserToGroupService, UserToGroupService>();
+        #endregion 
         return services;
     }
 }

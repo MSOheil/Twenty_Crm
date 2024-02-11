@@ -1,6 +1,6 @@
 ﻿namespace Twenty_Crm_Infratstructure.Persistence.Repositories.Contact;
 
-public class TelephoneRepository : GenericRepository<Twenty_Crm_Domain.Entities.Contact.Telephone>, ITelephoneRepository
+public class TelephoneRepository : GenericRepository<Twenty_Crm_Domain.Entities.Telephone.Telephone>, ITelephoneRepository
 {
     private readonly IApplicationDbContext db;
 

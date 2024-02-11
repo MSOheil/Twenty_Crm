@@ -9,6 +9,6 @@ public class SubGroup : BaseEntity
 
     #region Relations
     public IList<Twenty_Crm_Domain.Entities.User.User>? User { get; set; }
-    public GroupLeader? GroupLeader { get; set; }
+    public Group? GroupLeader { get; set; }
     #endregion
 }

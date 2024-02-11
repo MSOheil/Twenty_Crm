@@ -1,4 +1,6 @@
-﻿namespace Twenty_Crm_Application.Common.Interfaces.AppDbContext;
+﻿using Twenty_Crm_Domain.Entities.Telephone;
+
+namespace Twenty_Crm_Application.Common.Interfaces.AppDbContext;
 
 public interface IApplicationDbContext
 {
@@ -13,7 +15,7 @@ public interface IApplicationDbContext
     public DbSet<Mobile> Mobiles { get; }
     public DbSet<Operator> Operators { get; }
     public DbSet<Telephone> Telephones { get; }
-    public DbSet<GroupLeader> GroupLeaders { get; }
+    public DbSet<Group> GroupLeaders { get; }
     public DbSet<SubGroup> SubGroups { get; }
     public DbSet<InternationalCertificate> InternationalCertificates { get; }
     public DbSet<License> Licenses { get; }

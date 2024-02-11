@@ -11,6 +11,6 @@ public class City : BaseEntity
     #region Relations
     public County? County { get; set; }
     public IList<Twenty_Crm_Domain.Entities.Address.Address>? Addresses { get; set; }
-    public IList<Telephone>? Telephones { get; set; }
+    public IList<Twenty_Crm_Domain.Entities.Telephone.Telephone>? Telephones { get; set; }
     #endregion
 }

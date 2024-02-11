@@ -7,7 +7,8 @@ public class Address : BaseEntity
     public string? Title { get; set; }
     //public Guid CountryRef { get; private set; }
     //public Guid CountyRef { get; private set; }
-    public Guid CityRef { get; set; }
+    public Guid? CityRef { get; set; }
+    public Guid? SBCityRef { get; set; }
     public string? RegionOrVilageName { get; set; }
     public string? Street { get; set; }
     public string? Alley { get; set; }

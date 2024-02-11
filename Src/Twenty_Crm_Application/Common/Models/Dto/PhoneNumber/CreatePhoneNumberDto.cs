@@ -2,8 +2,6 @@
 
 public class CreatePhoneNumberDto
 {
-    public string? Description { get; set; }
+    public string? Title { get; set; }
     public string? PhoneNumber { get; set; }
-    public string? PrePhoneNumber { get; set; }
-    //public Phonenumber MyProperty { get; set; }
 }

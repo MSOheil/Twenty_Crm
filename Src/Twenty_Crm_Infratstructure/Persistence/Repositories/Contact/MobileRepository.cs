@@ -1,6 +1,6 @@
 ﻿namespace Twenty_Crm_Infratstructure.Persistence.Repositories.Contact;
 
-public class MobileRepository : GenericRepository<Twenty_Crm_Domain.Entities.Contact.Mobile>, IMobileRepository
+public class MobileRepository : GenericRepository<Twenty_Crm_Domain.Entities.Telephone.Mobile>, IMobileRepository
 {
     private readonly IApplicationDbContext db;
 

@@ -1,14 +1,15 @@
 ﻿namespace Twenty_Crm_Infratstructure.Persistence.Configuration.Contact;
 
-public class TelephoneConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.Entities.Contact.Telephone>
+public class TelephoneConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.Entities.Telephone.Telephone>
 {
-    public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Contact.Telephone> builder)
+    public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Telephone.Telephone> builder)
     {
         builder.Property(z => z.CreatedBy).HasMaxLength(140);
         builder.Property(z => z.ModifiedBy).HasMaxLength(140);
 
 
         builder.Property(b => b.TelephoneNumber).HasMaxLength(30);
+        builder.Property(b => b.PrePhoneNumber).HasMaxLength(5);
 
 
         builder.HasOne(b => b.User)

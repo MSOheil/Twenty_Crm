@@ -15,7 +15,7 @@ public class BankBranch : BaseEntity
 
     #region Realations
     public City? City { get; set; }
-    public IList<Telephone>? Telephones { get; set; }
+    public IList<Twenty_Crm_Domain.Entities.Telephone.Telephone>? Telephones { get; set; }
     public Bank? Bank { get; set; }
     public IList<BankAccount>? BankAccounts { get; set; }
     #endregion

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ppsD+wNc98/PvNul/5pUAigt218tG9iKlaiDp846SwYnPd+Q6ETrYqLC/vCj5K0N8U+IurVbtbXXknw+dNxMTA==",
+  "dgSpecHash": "f4JZGX010wHEtgUdrt1gVN1sz7jqIWGtqumR8TwKgt6Xx4v91meZstBT1gz/eR8dZJ5Tzc1k/eA7GMghwtBDlg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj",
+  "projectFilePath": "D:\\Git_Projects\\Twenty_Crm\\Src\\Twenty_Crm_Domain\\Twenty_Crm_Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.14\\microsoft.entityframeworkcore.7.0.14.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.14\\microsoft.entityframeworkcore.abstractions.7.0.14.nupkg.sha512",
@@ -15,10 +15,7 @@
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512"
+    "C:\\Users\\FARAD\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

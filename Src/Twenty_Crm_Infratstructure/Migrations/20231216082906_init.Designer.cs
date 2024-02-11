@@ -437,7 +437,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.ToTable("CompanyToUsers");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Mobile", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Mobile", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -487,7 +487,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.ToTable("Mobiles");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Operator", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Operator", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -527,7 +527,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.ToTable("Operators");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Telephone", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Telephone", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1705,13 +1705,13 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Mobile", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Mobile", b =>
                 {
                     b.HasOne("Twenty_Crm_Domain.Entities.Company.Company", null)
                         .WithMany("Mobiles")
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Twenty_Crm_Domain.Entities.Contact.Operator", "Operator")
+                    b.HasOne("Twenty_Crm_Domain.Entities.Telephone.Operator", "Operator")
                         .WithMany("Mobiles")
                         .HasForeignKey("OperatorRef")
                         .OnDelete(DeleteBehavior.NoAction);
@@ -1726,7 +1726,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Telephone", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Telephone", b =>
                 {
                     b.HasOne("Twenty_Crm_Domain.Entities.Bank.BankBranch", null)
                         .WithMany("Telephones")
@@ -1741,7 +1741,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .WithMany("Telephones")
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Twenty_Crm_Domain.Entities.Contact.Operator", "Operator")
+                    b.HasOne("Twenty_Crm_Domain.Entities.Telephone.Operator", "Operator")
                         .WithMany("Telephones")
                         .HasForeignKey("OperatorRef")
                         .OnDelete(DeleteBehavior.NoAction);
@@ -2017,7 +2017,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                     b.Navigation("WorkPlaces");
                 });
 
-            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Contact.Operator", b =>
+            modelBuilder.Entity("Twenty_Crm_Domain.Entities.Telephone.Operator", b =>
                 {
                     b.Navigation("Mobiles");
 

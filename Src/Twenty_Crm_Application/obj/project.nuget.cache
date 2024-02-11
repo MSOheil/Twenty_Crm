@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2mG70wSAHpNnEH60RY9n6zb0PnM5lacUdAbVM51CTVK2er6ndtHQgdnZyBT7D6IVNV40lfOTUU6a+PFHZeqAUA==",
+  "dgSpecHash": "8wFY74lxnhY3ugMrteT2g6mwIXJTSKtD9jE8KkzUQbBAVAcdd1/MO8hW+mIVUU2Gb2Y4VzvZMHnFLAydroZk6Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj",
+  "projectFilePath": "D:\\Git_Projects\\Twenty_Crm\\Src\\Twenty_Crm_Application\\Twenty_Crm_Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
@@ -18,10 +18,7 @@
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512"
+    "C:\\Users\\FARAD\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
