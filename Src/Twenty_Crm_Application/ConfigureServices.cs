@@ -1,4 +1,6 @@
-﻿namespace Twenty_Crm_Application;
+﻿using Twenty_Crm_Application.Common.Services.Phone;
+
+namespace Twenty_Crm_Application;
 
 public static class ConfigureServices
 {
@@ -38,6 +40,7 @@ public static class ConfigureServices
         services.AddScoped<IWebsiteService, WebsiteService>();
         services.AddScoped<IWorkPlaceService, WorkPlaceService>();
         services.AddScoped<IUserToGroupService, UserToGroupService>();
+        services.AddScoped<IPhoneNumberService, PhoneNumberService>();
         #endregion 
         return services;
     }

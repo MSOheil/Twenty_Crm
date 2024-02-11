@@ -44,6 +44,7 @@ public class User : BaseEntity
     public Twenty_Crm_Domain.Entities.Religion.Religion? Religions { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.Group.UserToGroup>? UserToGroups { get; set; }
     public IList<Twenty_Crm_Domain.Entities.Telephone.Telephone>? Telephones { get; set; }
+    public IList<Twenty_Crm_Domain.Entities.Telephone.Mobile>? Mobiles { get; set; }
     //public IList<CompanyToUser>? CompanyToUsers { get; set; }
 
     #endregion

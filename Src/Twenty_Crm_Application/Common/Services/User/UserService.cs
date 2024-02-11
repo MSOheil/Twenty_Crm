@@ -33,10 +33,10 @@ public class UserService : IUserService
                 ,
                 CompanyCreated = dto.CompanyRef,
             }, dto.FirstName);
-            if(dto.GroupList!=null&& dto.GroupList.Count > 0)
+            if (dto.GroupList != null && dto.GroupList.Count > 0)
             {
 
-            var createUserToGroup = await this.userToGroupService.CreateManyUserToGroupAsync(dto.GroupList, user.Id);
+                var createUserToGroup = await this.userToGroupService.CreateManyUserToGroupAsync(dto.GroupList, user.Id);
             }
             return new ResponseDto<ShowUserDto>("ثبت نام موفقیت امیز بود", 200, new ShowUserDto
             {
@@ -119,7 +119,47 @@ public class UserService : IUserService
                 DateOfBirth = b.DateOfBirth,
                 PayerId = b.PayerId,
                 ProfileImage = b.ProfileImage,
-                ReligionRef = b.ReligionRef
+                ReligionRef = b.ReligionRef,
+                Addreses = b.Addresses.Count > 0 ? b.Addresses.
+                Where(b => !b.BaseStatus.Equals(BaseEntityStatus.Deleted)).Select
+                (s => new ShowAddressDto
+                {
+                    Id = s.Id,
+                    Alley = s.Alley,
+                    CityRef = s.SBCityRef ?? Guid.Empty,
+                    HouseNumber = s.HouseNumber,
+                    PostalCode = s.PostalCode,
+                    RegionOrVilageName = s.RegionOrVilageName,
+                    Street = s.Street,
+                    Title = s.Title,
+                }).ToList() : new List<ShowAddressDto>(),
+                PhoneNumbers =
+                b.Mobiles.Count > 0 ? b.Mobiles.Where(b => !b.BaseStatus.Equals(BaseEntityStatus.Deleted))
+                    .Select(t => new ShowPhoneNumberDto
+                    {
+                        Id = t.Id,
+                        PhoneNumber = t.PhoneNumber,
+                        Title = t.Title,
+                        UserRef = t.UserRef,
+                    }).ToList() : new List<ShowPhoneNumberDto>(),
+                Telephones =
+                b.Mobiles.Count > 0 ? b.Telephones.Where(b => !b.BaseStatus.Equals(BaseEntityStatus.Deleted))
+                    .Select(t => new ShowTelephonesDto
+                    {
+                        Id = t.Id,
+                        Title = t.Title,
+                        PhoneNumber = t.TelephoneNumber,
+                        PrePhoneNumber = t.PrePhoneNumber,
+                        CityRef = t.CityRef,
+                        UserRef = t.UserRef,
+                    }).ToList() : new List<ShowTelephonesDto>(),
+                Groups = b.UserToGroups.Count > 0 ?
+                b.UserToGroups.Where(s => !s.BaseStatus.Equals(BaseEntityStatus.Deleted))
+                    .Select(z => new ShowGroupDto
+                    {
+                        Id = z.Id,
+                        Name = z.Group.Name,
+                    }).ToList() : new List<ShowGroupDto>(),
             }).PaginatedListAsync(dto.PageNumber, dto.PageSize);
         return data;
     }

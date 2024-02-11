@@ -19,4 +19,8 @@ public class ShowUserDto
     public string? ProfileImage { get; set; }
     public string? PersonalCode { get; set; }
     public Guid? ReligionRef { get; set; }
+    public IList<ShowPhoneNumberDto>? PhoneNumbers { get; set; }
+    public IList<ShowTelephonesDto>? Telephones { get; set; }
+    public IList<ShowAddressDto>? Addreses { get; set; }
+    public IList<ShowGroupDto>? Groups { get; set; }
 }

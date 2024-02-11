@@ -6,7 +6,7 @@ public class Mobile : BaseEntity
     public Guid UserRef { get; set; }
     public string? Title { get; set; }
     public string? PhoneNumber { get; set; }
-    public Guid OperatorRef { get; set; }
+    public Guid? OperatorRef { get; set; }
     #endregion
 
     #region Relations

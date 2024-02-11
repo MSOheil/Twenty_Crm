@@ -3,8 +3,7 @@
 public class ShowPhoneNumberDto
 {
     public Guid Id { get; set; }
-    public string? PrePhoneNumber { get; set; }
     public string? PhoneNumber { get; set; }
-    public string? Description { get; set; }
+    public string? Title { get; set; }
     public Guid? UserRef { get; set; }
 }
