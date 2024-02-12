@@ -31,6 +31,7 @@ public class UserService : IUserService
                 ProfileImage = dto.ProfileImage,
                 ReligionRef = dto.ReligionRef
                 ,
+                CompanyName = dto.CompanyName,
                 CompanyCreated = dto.CompanyRef,
             }, dto.FirstName);
             if (dto.GroupList != null && dto.GroupList.Count > 0)
@@ -100,9 +101,9 @@ public class UserService : IUserService
         return data;
     }
 
-    public Task<PaginatedList<ShowUserDto>> GetUserByPaginationAsync(Guid companyRef, GetWithPagination dto)
+    public async Task<PaginatedList<ShowUserDto>> GetUserByPaginationAsync(Guid companyRef, GetWithPagination dto)
     {
-        var data = userRepository.GetAll()
+        var data = await userRepository.GetAll()
             .Where(b => b.CompanyCreated.Equals(companyRef)).Select(b => new ShowUserDto
             {
                 FirstName = b.FirstName,
@@ -120,6 +121,7 @@ public class UserService : IUserService
                 PayerId = b.PayerId,
                 ProfileImage = b.ProfileImage,
                 ReligionRef = b.ReligionRef,
+                CompanyName = b.CompanyName,
                 Addreses = b.Addresses.Count > 0 ? b.Addresses.
                 Where(b => !b.BaseStatus.Equals(BaseEntityStatus.Deleted)).Select
                 (s => new ShowAddressDto
@@ -143,7 +145,7 @@ public class UserService : IUserService
                         UserRef = t.UserRef,
                     }).ToList() : new List<ShowPhoneNumberDto>(),
                 Telephones =
-                b.Mobiles.Count > 0 ? b.Telephones.Where(b => !b.BaseStatus.Equals(BaseEntityStatus.Deleted))
+                b.Telephones.Count > 0 ? b.Telephones.Where(b => !b.BaseStatus.Equals(BaseEntityStatus.Deleted))
                     .Select(t => new ShowTelephonesDto
                     {
                         Id = t.Id,

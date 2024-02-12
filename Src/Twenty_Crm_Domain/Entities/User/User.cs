@@ -10,7 +10,7 @@ public class User : BaseEntity
     public string? NationalCode { get; set; }
     public DateTime BirthDay { get; set; }
     public string? EmailAddress { get; set; }
-    public bool Housing { get; set; } 
+    public bool Housing { get; set; }
     public Guid? CreatedCompany { get; set; }
     /// <summary>
     /// رمز یا کد پرسونلی که به شکل hash ذخیره میشود
@@ -25,6 +25,7 @@ public class User : BaseEntity
     //public Guid? GroupLeaderRef { get; set; }
     //public Guid? PassportRef { get; set; }
     public Guid? ReligionRef { get; set; }
+    public string? CompanyName { get; set; }
     #endregion
 
     #region Realation 

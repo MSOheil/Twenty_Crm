@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CextP6aRVvXjfs4ubsne9gT6QTPy3b1YbCCJnTSSxmSVp4T937d57WSErW+egy8JCCtRL5Y/BmJ7UHyRXfUHyg==",
+  "dgSpecHash": "fQBbFEo5O6z6p5tflCUoopOIf3eMEJdQfFO9k5Dxh3tnQ7mgzRAw6ipVDzO87g8G37NppbuliGJkvMC2fU6rfA==",
   "success": true,
-  "projectFilePath": "D:\\Git_Projects\\Twenty_Crm\\Src\\Twenty_Crm_Presentation\\Twenty_Crm_Presentation.csproj",
+  "projectFilePath": "C:\\Users\\FARAD\\Desktop\\Twenty_Main_2023\\Twenty_Crm\\Src\\Twenty_Crm_Presentation\\Twenty_Crm_Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\FARAD\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -75,7 +75,11 @@
     "C:\\Users\\FARAD\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\FARAD\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\FARAD\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\FARAD\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.11\\microsoft.netcore.app.host.win-x64.6.0.11.nupkg.sha512",
+    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\FARAD\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512"
   ],
   "logs": []
 }

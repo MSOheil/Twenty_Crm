@@ -18,4 +18,5 @@ public class CreateUserDto
     public Guid? ReligionRef { get; set; }
     public Guid? CompanyRef { get; set; }
     public IList<Guid>? GroupList { get; set; }
+    public string? CompanyName { get; set; }
 }

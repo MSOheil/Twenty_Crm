@@ -17,6 +17,7 @@ public class UserConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.Enti
         builder.Property(b => b.HashedPassword).HasMaxLength(150);
         builder.Property(b => b.RefreshToken).HasMaxLength(500);
         builder.Property(b => b.ProfileImage).HasMaxLength(600); 
+        builder.Property(b => b.CompanyName).HasMaxLength(350);
 
 
 
