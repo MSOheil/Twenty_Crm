@@ -44,4 +44,29 @@ public class UserToGroupService : IUserToGroupService
 
 
     }
+
+    public async Task<ResponseDto<bool>> CreateUserToGroupAsync(Guid groupId, Guid userRef)
+    {
+        try
+        {
+            var userToGroupList = new Twenty_Crm_Domain.Entities.Group.UserToGroup()
+            {
+                GropuRef = groupId,
+                UserRef = userRef,
+            };
+
+            await this.userToGroupRepo.CreateAsync(userToGroupList, "");
+
+            return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
+                , 200, true);
+        }
+        catch (Exception ex)
+        {
+            this.logger.LogError($"we have error in line 38 with error message : {ex.Message}" +
+                $" in class [UserToGroupService]" +
+                $"");
+
+            return default;
+        }
+    }
 }

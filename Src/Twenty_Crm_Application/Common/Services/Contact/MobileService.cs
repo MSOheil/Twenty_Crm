@@ -20,6 +20,7 @@ public class MobileService : IMobileService
                 {
                     Title = phoneNumbers[i].Title,
                     PhoneNumber = phoneNumbers[i].PhoneNumber,
+                    UserRef = Guid.Empty,
                 });
             }
             await this.mobileRepository.AddManyAsync(newPhoneNumbers);
@@ -35,4 +36,5 @@ public class MobileService : IMobileService
             return default;
         }
     }
+     
 }

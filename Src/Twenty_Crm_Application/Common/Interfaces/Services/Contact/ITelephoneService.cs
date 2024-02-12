@@ -2,4 +2,5 @@
 public interface ITelephoneService
 {
     Task<ResponseDto<bool>> CreateManayTelephoneAsync(Guid userRef, IList<CreateTelephoneDto> dto);
+    Task<ResponseDto<bool>> CreateTelephoneAsync(Guid userRef, CreateTelephoneDto dto);
 }

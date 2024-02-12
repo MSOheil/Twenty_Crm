@@ -36,4 +36,28 @@ public class TelephoneService : ITelephoneService
                 , 500, false);
         }
     }
+
+    public async Task<ResponseDto<bool>> CreateTelephoneAsync(Guid userRef, CreateTelephoneDto dto)
+    {
+        try
+        {
+            var telephone = new Twenty_Crm_Domain.Entities.Telephone.Telephone
+            {
+                UserRef = userRef,
+                PrePhoneNumber = dto.PrePhoneNumber,
+                Title = dto.Title,
+                TelephoneNumber = dto.PhoneNumber,
+            };
+
+            await this.telephoneRepository.CreateAsync(telephone, "");
+
+            return new ResponseDto<bool>("ثبت اطلاعات موفقیت انجام شد"
+                , 200, true);
+        }
+        catch (Exception ex)
+        {
+            return new ResponseDto<bool>("ثبت اطلاعات با خطا انجام شد"
+                , 500, false);
+        }
+    }
 }

@@ -2,5 +2,5 @@
 
 public interface IMobileService
 {
-    Task<ResponseDto<bool>> CreateManyPhoneNumberAsync(IList<CreateTelephoneDto> phoneNumbers);
+    Task<ResponseDto<bool>> CreateManyPhoneNumberAsync(IList<CreateTelephoneDto> phoneNumbers); 
 }

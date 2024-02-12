@@ -33,4 +33,28 @@ public class PhoneNumberService : IPhoneNumberService
                , 500, false);
         }
     }
+
+    public async Task<ResponseDto<bool>> CreatePhoneNumberDtoAsync(Guid userRef, CreatePhoneNumberDto dto)
+    {
+        try
+        {
+            var phoneNumber = new Twenty_Crm_Domain.Entities.Telephone.Mobile
+            {
+                UserRef = userRef,
+                PhoneNumber = dto.PhoneNumber,
+                Title = dto.Title,
+            };
+            await this.phoneNumberRepo.CreateAsync(phoneNumber, "");
+
+            return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
+                , 200, true);
+        }
+        catch (Exception ex)
+        {
+
+
+            return new ResponseDto<bool>("ثبت اطلاعات با خطا مواجه شد"
+                , 500, false);
+        }
+    }
 }
