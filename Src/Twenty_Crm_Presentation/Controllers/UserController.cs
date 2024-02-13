@@ -2,11 +2,15 @@ public class UserController : BaseController
 {
     private readonly ILogger<UserController> _logger;
     private readonly IUserService userService;
-    public UserController(ILogger<UserController> logger, IUserService userService)
+    private readonly IUserRepository userRepository;
+
+    public UserController(ILogger<UserController> logger, IUserService userService, IUserRepository userRepository)
     {
         _logger = logger;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
+
     [HttpGet("{companyRef}")]
     public async Task<PaginatedList<ShowUserDto>> GetList(Guid companyRef, [FromQuery] GetWithPagination dto)
     {
@@ -34,6 +38,12 @@ public class UserController : BaseController
     {
         return await this.userService.GetByIdAsync(id);
     }
+    [HttpDelete]
+    public async Task DeleteAll()
+    {
+        var allEntities = await this.userRepository.GetAll().ToListAsync();
+        await this.userRepository.DeleteManyAsync(allEntities, "");
 
+    }
 
 }

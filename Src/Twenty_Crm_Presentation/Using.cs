@@ -13,7 +13,19 @@ global using Twenty_Crm_Application.Common.Models.Dto.Telephon;
 global using Twenty_Crm_Application.Common.Models.Dto.User;
 global using Twenty_Crm_Presentation.Attributes;
 global using Twenty_Crm_Presentation.Controllers.Base;
+global using Microsoft.EntityFrameworkCore;
 global using Range = Microsoft.Office.Interop.Excel.Range;
+global using Twenty_Crm_Application.Common.Interfaces.Repositories.User;
+global using Twenty_Crm_Application.Common.Interfaces.Repositories.PhoneNumber;
+global using Twenty_Crm_Application.Common.Interfaces.Repositories.Group;
+global using Twenty_Crm_Application.Common.Interfaces.Repositories.Contact;
+
+
+
+
+
+
+
 
 
 

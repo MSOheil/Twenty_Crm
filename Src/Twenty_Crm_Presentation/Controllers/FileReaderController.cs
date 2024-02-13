@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Twenty_Crm_Application.Common.Interfaces.Repositories.Contact;
-using Twenty_Crm_Application.Common.Interfaces.Repositories.Group;
-using Twenty_Crm_Application.Common.Interfaces.Repositories.PhoneNumber;
-using Twenty_Crm_Application.Common.Interfaces.Repositories.User;
-
-namespace Twenty_Crm_Presentation.Controllers;
+﻿namespace Twenty_Crm_Presentation.Controllers;
 public class FileReaderController : BaseController
 {
     private readonly IGroupRepository groupRepository;
@@ -35,7 +29,7 @@ public class FileReaderController : BaseController
     }
 
     [HttpPost("{companyRef}")]
-    public async Task<ResponseDto<bool>> Read(Guid companyRef, IFormFile formFile)
+    public async Task<ResponseDto<bool>> Read(Guid companyRef, [FromForm] IFormFile formFile)
     {
         if (formFile != null && formFile.Length > 0)
         {
@@ -50,7 +44,6 @@ public class FileReaderController : BaseController
             var threeHomeNumber = 41;
             var stateName = 45;
             var companyName = 52;
-            var gropEsfName = "آهن فروشان اصفهان";
 
 
             var phoneNumberList = new List<Twenty_Crm_Domain.Entities.Telephone.Mobile>();
@@ -129,7 +122,7 @@ public class FileReaderController : BaseController
                         phoneNumberList.Add(new Twenty_Crm_Domain.Entities.Telephone.Mobile
                         {
                             PhoneNumber = firstMobileNumberValue,
-                            Title = "اولین شماره تلفن",
+                            Title = "",
                             UserRef = createUser.Id,
                         });
                     }
@@ -148,7 +141,7 @@ public class FileReaderController : BaseController
                         {
                             UserRef = createUser.Id,
                             PhoneNumber = towMobileNumberValue,
-                            Title = "دومین شماره تلفن",
+                            Title = "",
                         });
                     }
                     #endregion
@@ -169,7 +162,7 @@ public class FileReaderController : BaseController
                         telephoneList.Add(new Twenty_Crm_Domain.Entities.Telephone.Telephone
                         {
                             UserRef = createUser.Id,
-                            Title = "اولین تلفن ثابت",
+                            Title = "",
                             TelephoneNumber = phoneNumber,
                             PrePhoneNumber = prePhoneNumber,
                         });
@@ -180,8 +173,8 @@ public class FileReaderController : BaseController
                     #region Create two telephone value
                     if (createUser != null && createUser.Id != Guid.Empty && twoHomeNumberValue != null)
                     {
-                        var prePhoneNumber = twoHomeNumberValue.Substring(0, 2);
-                        var phoneNumber = twoHomeNumberValue.Substring(3, 6);
+                        var prePhoneNumber = twoHomeNumberValue.Substring(0, 3);
+                        var phoneNumber = twoHomeNumberValue.Substring(3,8);
                         //await this.telephoneService.CreateTelephoneAsync(createUser.Id ?? Guid.Empty, new CreateTelephoneDto
                         //{
                         //    Title = "اولین تلفن ثابت",
@@ -191,7 +184,7 @@ public class FileReaderController : BaseController
                         telephoneList.Add(new Twenty_Crm_Domain.Entities.Telephone.Telephone
                         {
                             UserRef = createUser.Id,
-                            Title = "دومین تلفن ثابت",
+                            Title = "",
                             TelephoneNumber = phoneNumber,
                             PrePhoneNumber = prePhoneNumber,
                         });
@@ -201,8 +194,8 @@ public class FileReaderController : BaseController
                     #region Create two telephone value
                     if (createUser != null && createUser.Id != Guid.Empty && threeHomeNumberValue != null)
                     {
-                        var prePhoneNumber = threeHomeNumberValue.Substring(0, 2);
-                        var phoneNumber = threeHomeNumberValue.Substring(3, 6);
+                        var prePhoneNumber = threeHomeNumberValue.Substring(0, 3);
+                        var phoneNumber = threeHomeNumberValue.Substring(3, 8);
                         //await this.telephoneService.CreateTelephoneAsync(createUser.Id ?? Guid.Empty, new CreateTelephoneDto
                         //{
                         //    Title = "اولین تلفن ثابت",
@@ -212,7 +205,7 @@ public class FileReaderController : BaseController
                         telephoneList.Add(new Twenty_Crm_Domain.Entities.Telephone.Telephone
                         {
                             UserRef = createUser.Id,
-                            Title = "سومین تلفن ثابت",
+                            Title = "",
                             TelephoneNumber = phoneNumber,
                             PrePhoneNumber = prePhoneNumber,
                         });
