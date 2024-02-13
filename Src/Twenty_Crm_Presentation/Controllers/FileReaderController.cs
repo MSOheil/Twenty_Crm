@@ -1,4 +1,8 @@
-﻿namespace Twenty_Crm_Presentation.Controllers;
+﻿using Microsoft.Office.Interop.Excel;
+using Twenty_Crm_Application.Common.Interfaces.Repositories.Website;
+using Range = Microsoft.Office.Interop.Excel.Range;
+
+namespace Twenty_Crm_Presentation.Controllers;
 public class FileReaderController : BaseController
 {
     private readonly IGroupRepository groupRepository;
@@ -12,9 +16,12 @@ public class FileReaderController : BaseController
     private readonly IPhoneNumberRepo phoneNumberRepo;
     private readonly IUserToGroupRepo userToGroupRepo;
     private readonly IUserRepository userRepository;
-
-    public FileReaderController(IGroupRepository groupRepository, IUserService userService, IGroupService groupService, ITelephoneService telephoneService, IMobileService mobileService, IUserToGroupService userToGroupService, IPhoneNumberService phoneNumberService, ITelephoneRepository telephoneRepository, IPhoneNumberRepo phoneNumberRepo, IUserToGroupRepo userToGroupRepo, IUserRepository userRepository)
+    private readonly ILogger<FileReaderController> logger;
+    private readonly IWebsiteRepository websiteRepository;
+    public FileReaderController(IWebsiteRepository websiteRepository, ILogger<FileReaderController> logger, IGroupRepository groupRepository, IUserService userService, IGroupService groupService, ITelephoneService telephoneService, IMobileService mobileService, IUserToGroupService userToGroupService, IPhoneNumberService phoneNumberService, ITelephoneRepository telephoneRepository, IPhoneNumberRepo phoneNumberRepo, IUserToGroupRepo userToGroupRepo, IUserRepository userRepository)
     {
+        this.websiteRepository = websiteRepository;
+        this.logger = logger;
         this.groupRepository = groupRepository;
         this.userService = userService;
         this.groupService = groupService;
@@ -31,6 +38,11 @@ public class FileReaderController : BaseController
     [HttpPost("{companyRef}")]
     public async Task<ResponseDto<bool>> Read(Guid companyRef, [FromForm] IFormFile formFile)
     {
+        this.logger.LogInformation(
+            $" we have got file " +
+            $"with file name : {formFile.FileName}" +
+            $" in line 38 class [FileReaderController]" +
+            $" and with file info : {formFile.Name}");
         if (formFile != null && formFile.Length > 0)
         {
             var firstName = 2;
@@ -44,12 +56,13 @@ public class FileReaderController : BaseController
             var threeHomeNumber = 41;
             var stateName = 45;
             var companyName = 52;
-
+            var websiteName = 60;
 
             var phoneNumberList = new List<Twenty_Crm_Domain.Entities.Telephone.Mobile>();
             var telephoneList = new List<Twenty_Crm_Domain.Entities.Telephone.Telephone>();
             var groupList = new List<Twenty_Crm_Domain.Entities.Group.UserToGroup>();
             var userList = new List<Twenty_Crm_Domain.Entities.User.User>();
+            var websites = new List<Twenty_Crm_Domain.Entities.Website.Website>();
             try
             {
                 string filePath = Path.GetTempFileName(); // مسیر موقت برای ذخیره فایل 
@@ -68,10 +81,10 @@ public class FileReaderController : BaseController
 
                 for (int i = 1; i <= rowCount; i++)
                 {
-                    var firstNameValue = (excelRange.Cells[i, firstName] as Range)?.Value;
-                    var lastNameValue = (excelRange.Cells[i, lastName] as Range)?.Value;
-                    var companyNameValue = (excelRange.Cells[i, companyName] as Range)?.Value;
-                    var jobDescriptionValue = (excelRange.Cells[i, jobDescription] as Range)?.Value;
+                    var firstNameValue = (excelRange.Cells[i, firstName] as Range)?.Value as string;
+                    var lastNameValue = (excelRange.Cells[i, lastName] as Range)?.Value as string;
+                    var companyNameValue = (excelRange.Cells[i, companyName] as Range)?.Value as string;
+                    var jobDescriptionValue = (excelRange.Cells[i, jobDescription] as Range)?.Value as string;
                     #region CreateUser
                     //var createUser = await this.userService.CreateUserAsync(new CreateUserDto
                     //{
@@ -107,9 +120,8 @@ public class FileReaderController : BaseController
                             UserRef = createUser.Id,
                         });
                     }
-                    #endregion
-
-                    var firstMobileNumberValue = (excelRange.Cells[i, firstMobileNumber] as Range)?.Value;
+                    #endregion 
+                    var firstMobileNumberValue = (excelRange.Cells[i, firstMobileNumber] as Range)?.Value as string;
                     #region Create first mobile value
                     if (createUser != null && createUser.Id != Guid.Empty && firstMobileNumberValue != null)
                     {
@@ -127,7 +139,7 @@ public class FileReaderController : BaseController
                         });
                     }
                     #endregion
-                    var towMobileNumberValue = (excelRange.Cells[i, towMobileNumber] as Range)?.Value;
+                    var towMobileNumberValue = (excelRange.Cells[i, towMobileNumber] as Range)?.Value as string;
                     #region Create two mobile value
                     if (createUser != null && createUser.Id != Guid.Empty && towMobileNumberValue != null)
                     {
@@ -150,8 +162,8 @@ public class FileReaderController : BaseController
                     #region Create first telephone value
                     if (createUser != null && createUser.Id != Guid.Empty && homePhoneNumberValue != null)
                     {
-                        var prePhoneNumber = homePhoneNumberValue.Substring(0, 3);
-                        var phoneNumber = homePhoneNumberValue.Substring(3, 8);
+                        var prePhoneNumber = homePhoneNumberValue.Substring(0, 3); 
+                        var phoneNumber = homePhoneNumberValue.Substring(3);
                         //await this.telephoneService.CreateTelephoneAsync(createUser.Id ?? Guid.Empty, new CreateTelephoneDto
                         //{
                         //    Title = "اولین تلفن ثابت",
@@ -169,12 +181,12 @@ public class FileReaderController : BaseController
                     }
                     #endregion
 
-                    var twoHomeNumberValue = (excelRange.Cells[i, twoHomeNumber] as Range)?.Value;
+                    var twoHomeNumberValue = (excelRange.Cells[i, twoHomeNumber] as Range)?.Value as string;
                     #region Create two telephone value
                     if (createUser != null && createUser.Id != Guid.Empty && twoHomeNumberValue != null)
                     {
                         var prePhoneNumber = twoHomeNumberValue.Substring(0, 3);
-                        var phoneNumber = twoHomeNumberValue.Substring(3,8);
+                        var phoneNumber = twoHomeNumberValue.Substring(3);
                         //await this.telephoneService.CreateTelephoneAsync(createUser.Id ?? Guid.Empty, new CreateTelephoneDto
                         //{
                         //    Title = "اولین تلفن ثابت",
@@ -190,12 +202,12 @@ public class FileReaderController : BaseController
                         });
                     }
                     #endregion
-                    var threeHomeNumberValue = (excelRange.Cells[i, threeHomeNumber] as Range)?.Value;
+                    var threeHomeNumberValue = (excelRange.Cells[i, threeHomeNumber] as Range)?.Value as string;
                     #region Create two telephone value
                     if (createUser != null && createUser.Id != Guid.Empty && threeHomeNumberValue != null)
                     {
                         var prePhoneNumber = threeHomeNumberValue.Substring(0, 3);
-                        var phoneNumber = threeHomeNumberValue.Substring(3, 8);
+                        var phoneNumber = threeHomeNumberValue.Substring(3);
                         //await this.telephoneService.CreateTelephoneAsync(createUser.Id ?? Guid.Empty, new CreateTelephoneDto
                         //{
                         //    Title = "اولین تلفن ثابت",
@@ -212,21 +224,58 @@ public class FileReaderController : BaseController
                     }
                     #endregion
                     var stateNameValue = (excelRange.Cells[i, stateName] as Range)?.Value;
+
+
+                    var websiteValue = (excelRange.Cells[i, websiteName] as Range)?.Value as string;
+                    #region insertwebiste
+                    if (websiteValue is not null && createUser != null && createUser.Id != Guid.Empty
+                      )
+                    {
+
+                        websites.Add(new Twenty_Crm_Domain.Entities.Website.Website
+                        {
+                            UserRef = createUser.Id,
+                            Url = websiteValue,
+                            Name = "",
+                        });
+                    }
+
+                    #endregion
                 }
 
                 excelWorkbook.Close(false);
                 excelApp.Quit();
+                this.logger.LogInformation($"" +
+                    $"we user count in line 226 " +
+                    $": {userList.Count}");
                 await this.userRepository.AddRangeAsync(userList);
+                this.logger.LogInformation($"" +
+                $"we groupt list count in line 230 " +
+                $": {groupList.Count}");
                 await this.userToGroupRepo.AddManyAsync(groupList);
+                this.logger.LogInformation($"" +
+                $"we telephone list count in line 234 " +
+                $": {telephoneList.Count}");
                 await this.telephoneRepository.AddManyAsync(telephoneList);
-                await this.phoneNumberRepo.AddRangeAsync(phoneNumberList);
+                this.logger.LogInformation($"" +
+                $"we phoneNumberList count in line 238 " +
+                $": {phoneNumberList.Count}");
+                await this.phoneNumberRepo.AddManyAsync(phoneNumberList);
+                this.logger.LogInformation($"" +
+              $"we website count in line 265 " +
+              $": {websites.Count}");
+                await this.websiteRepository.AddRangeAsync(websites);
                 return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
                     , 200, true);
             }
             catch (Exception ex)
             {
+                this.logger.LogError($" we have error in line 234 " +
+                    $"with error message  : {ex.Message}" +
+                    $" for read file and insert it in class [FileReaderController]" +
+                    $"");
                 return new ResponseDto<bool>("ثبت اطلاعات با خطا مواجه شد"
-                    , 500, true);
+                    , 500, false);
             }
         }
         return new ResponseDto<bool>("ثبت اطلاات با خطا مواجه شد"

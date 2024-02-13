@@ -162,6 +162,12 @@ public class UserService : IUserService
                         Id = z.Id,
                         Name = z.Group.Name,
                     }).ToList() : new List<ShowGroupDto>(),
+                Websites = b.Websites.Count > 0 ? b.Websites.Select(e => new ShowWebsiteDto
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Url = e.Url,
+                }).ToList() : new List<ShowWebsiteDto>(),
             }).PaginatedListAsync(dto.PageNumber, dto.PageSize);
         return data;
     }

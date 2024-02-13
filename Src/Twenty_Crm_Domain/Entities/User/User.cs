@@ -47,6 +47,5 @@ public class User : BaseEntity
     public IList<Twenty_Crm_Domain.Entities.Telephone.Telephone>? Telephones { get; set; }
     public IList<Twenty_Crm_Domain.Entities.Telephone.Mobile>? Mobiles { get; set; }
     //public IList<CompanyToUser>? CompanyToUsers { get; set; }
-
     #endregion
 }

@@ -24,4 +24,5 @@ public class ShowUserDto
     public IList<ShowTelephonesDto>? Telephones { get; set; }
     public IList<ShowAddressDto>? Addreses { get; set; }
     public IList<ShowGroupDto>? Groups { get; set; }
+    public IList<ShowWebsiteDto>? Websites { get; set; }
 }

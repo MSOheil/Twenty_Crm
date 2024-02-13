@@ -1,11 +1,5 @@
-using Microsoft.OpenApi.Models;
-using Twenty_Crm_Application;
-using Twenty_Crm_Infratstructure;
-
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
-
 builder.Services.AddControllers();
 //builder.Services.AddApplcationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
@@ -42,9 +36,13 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 #endregion
-
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console()
+    .ReadFrom.Configuration(ctx.Configuration));
 var app = builder.Build();
 
+
+builder.Services.AddCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -57,7 +55,7 @@ app.UseCors(builder =>
     .AllowAnyMethod()
     .AllowAnyHeader();
 });
-
+app.UseSerilogRequestLogging();
 app.UseSwagger();
 
 app.UseSwaggerUI();
