@@ -65,7 +65,11 @@ public class FileReaderController : BaseController
             var websites = new List<Twenty_Crm_Domain.Entities.Website.Website>();
             try
             {
-                string filePath = Path.GetTempFileName(); // مسیر موقت برای ذخیره فایل 
+                this.logger.LogInformation
+                    ("in line 69 for starting file path");
+                string filePath = AppDomain.CurrentDomain.BaseDirectory;
+                this.logger.LogInformation(
+                    $" after generate in line 72 file path is  : {filePath}");
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await formFile.CopyToAsync(stream);
@@ -162,7 +166,7 @@ public class FileReaderController : BaseController
                     #region Create first telephone value
                     if (createUser != null && createUser.Id != Guid.Empty && homePhoneNumberValue != null)
                     {
-                        var prePhoneNumber = homePhoneNumberValue.Substring(0, 3); 
+                        var prePhoneNumber = homePhoneNumberValue.Substring(0, 3);
                         var phoneNumber = homePhoneNumberValue.Substring(3);
                         //await this.telephoneService.CreateTelephoneAsync(createUser.Id ?? Guid.Empty, new CreateTelephoneDto
                         //{
@@ -265,6 +269,16 @@ public class FileReaderController : BaseController
               $"we website count in line 265 " +
               $": {websites.Count}");
                 await this.websiteRepository.AddRangeAsync(websites);
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                    this.logger
+                        .LogError
+                        ($"" +
+                        $"we deleted file with filepath " +
+                        $"{filePath}");
+                }
                 return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
                     , 200, true);
             }
