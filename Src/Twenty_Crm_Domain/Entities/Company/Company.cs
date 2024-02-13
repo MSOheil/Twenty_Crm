@@ -16,9 +16,8 @@ public class Company : BaseEntity
     public string? BrandName { get; set; }
     public string? CompanyImage { get; set; }
     public string? Description { get; set; }
-    public Guid TitleRef { get; set; }
-    #endregion
-
+    public Guid? TitleRef { get; set; }
+    #endregion 
     #region Relations
     public Twenty_Crm_Domain.Entities.Title.Title? Title { get; private set; }
     public IList<Twenty_Crm_Domain.Entities.Address.Address>? Addresses { get; private set; }

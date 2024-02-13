@@ -73,8 +73,14 @@ public class FileReaderController : BaseController
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await formFile.CopyToAsync(stream);
+                    this.logger
+                        .LogInformation
+                        ("We have created file in" +
+                        "file path " +
+                        $" : {filePath}");
                 }
-
+                this.logger.LogInformation("" +
+                    "starting for import excel file and read ");
                 Application excelApp = new Application();
                 Workbook excelWorkbook = excelApp.Workbooks.Open(filePath);
                 _Worksheet excelWorksheet = excelWorkbook.Sheets[1];
