@@ -4,8 +4,8 @@ public class GroupLeaderConfiguration : IEntityTypeConfiguration<Twenty_Crm_Doma
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Group.Group> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
 
 
         builder.Property(b => b.Name).HasMaxLength(150);

@@ -4,8 +4,8 @@ public class LicenseConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.E
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.License.License> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
 
 
         builder.Property(b => b.Description).HasMaxLength(400);

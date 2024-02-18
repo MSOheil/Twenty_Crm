@@ -4,8 +4,8 @@ public class UserConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.Enti
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.User.User> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
 
 
 

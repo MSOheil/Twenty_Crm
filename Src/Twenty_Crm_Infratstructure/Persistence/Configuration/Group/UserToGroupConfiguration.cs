@@ -4,8 +4,8 @@ public class UserToGroupConfiguration : IEntityTypeConfiguration<Twenty_Crm_Doma
 {
     void IEntityTypeConfiguration<UserToGroup>.Configure(EntityTypeBuilder<UserToGroup> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
         builder.HasKey(z => z.Id);
 
 

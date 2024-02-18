@@ -4,8 +4,8 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.E
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Company.Company> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
         builder.Property(z => z.Name).HasMaxLength(300);
         builder.Property(z => z.InsertNumber).HasMaxLength(150);
         builder.Property(b => b.BrandName).HasMaxLength(150);

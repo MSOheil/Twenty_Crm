@@ -4,8 +4,8 @@ public class RoleConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.Enti
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.User.Role> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
         builder.Property(z => z.Name).HasMaxLength(150);
 
 

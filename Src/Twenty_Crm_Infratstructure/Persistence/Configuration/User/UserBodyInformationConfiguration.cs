@@ -4,8 +4,8 @@ public class UserBodyInformationConfiguration : IEntityTypeConfiguration<Twenty_
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.User.UserBodyInformation> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
 
 
         builder.Property(b => b.Height).HasMaxLength(30);

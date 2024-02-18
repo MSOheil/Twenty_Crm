@@ -23,7 +23,7 @@ public class UserToGroupService : IUserToGroupService
                     UserRef = userRef,
                     GropuRef = groupList[i],
                     CreateDate = DateTime.Now,
-                    ModifyDate = DateTime.Now,
+                    //ModifyDate = DateTime.Now,
                 });
             }
 

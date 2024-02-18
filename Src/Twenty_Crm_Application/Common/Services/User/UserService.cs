@@ -63,8 +63,8 @@ public class UserService : IUserService
 
             if (user is not null)
             {
-                await this.userRepository.DeleteAsync(id, userActionName);
-
+                user.BaseStatus = BaseEntityStatus.Edited;
+                await this.userRepository.DeleteAsync(id, userActionName); 
                 return new ResponseDto<bool>("حذف کاربر با موفقیت انجام شد"
                     , 200, true);
             }

@@ -16,7 +16,6 @@ public class UserController : BaseController
     {
         return await this.userService.GetUserByPaginationAsync(companyRef, dto);
     }
-
     [HttpPost]
     public async Task<ResponseDto<ShowUserDto>> Create([FromBody] CreateUserDto dto)
     {

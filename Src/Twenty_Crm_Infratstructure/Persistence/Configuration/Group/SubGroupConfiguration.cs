@@ -4,8 +4,8 @@ public class SubGroupConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain.
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Group.SubGroup> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
 
 
         builder.HasOne(b => b.GroupLeader)

@@ -19,15 +19,15 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity>
         entity.CreatedBy = userName;
         var result = await dbContext.SetDb<TEntity>().AddAsync(entity);
         entity.CreateDate = DateTime.Now;
-        entity.ModifyDate = DateTime.Now;
+        //entity.ModifyDate = DateTime.Now;
         await dbContext.SaveChangesAsync();
         return result.Entity;
     }
 
     public async Task UpdateAsync(TEntity entity, string userName)
     {
-        entity.ModifyDate = DateTime.Now;
-        entity.ModifiedBy = userName;
+        //entity.ModifyDate = DateTime.Now;
+        //entity.ModifiedBy = userName;
         dbContext.SetDb<TEntity>().Update(entity);
         await dbContext.SaveChangesAsync();
     }
@@ -82,11 +82,12 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity>
             var entity = await GetByIdAsync(id);
             if (entity is not null)
             {
-                entity.ModifiedBy = userName;
-                entity.BaseStatus = BaseEntityStatus.Deleted;
+                await this.CreateAsync(entity, userName);
+                //entity.ModifiedBy = userName;
+                //entity.BaseStatus = BaseEntityStatus.Deleted;
                 //dbContext.SetDb<TEntity>().Remove(entity);
-                dbContext.SetDb<TEntity>().Update(entity);
-                await dbContext.SaveChangesAsync();
+                //dbContext.SetDb<TEntity>().Update(entity);
+                //await dbContext.SaveChangesAsync();
                 return true;
             }
             return false;
@@ -113,9 +114,9 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity>
     {
         foreach (var item in entities)
         {
-            item.ModifyDate = DateTime.Now;
+            //item.ModifyDate = DateTime.Now;
+            //item.ModifiedBy = userId;
             item.BaseStatus = BaseEntityStatus.Deleted;
-            item.ModifiedBy = userId;
         }
 
         //dbContext.SetDb<TEntity>().RemoveRange(entities);

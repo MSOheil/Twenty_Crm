@@ -15,14 +15,14 @@ public class BaseEntity : IBaseEntity, IEquatable<BaseEntity>
     /// Date of create entity
     /// </summary>
     public DateTime CreateDate { get; set; } = DateTime.Now;
-    /// <summary>
-    /// Date of modified entity
-    /// </summary>
-    public DateTime ModifyDate { get; set; } = DateTime.Now;
-    /// <summary>
-    /// Person that modified entity
-    /// </summary>
-    public string? ModifiedBy { get; set; }
+    ///// <summary>
+    ///// Date of modified entity
+    ///// </summary>
+    //public DateTime ModifyDate { get; set; } = DateTime.Now;
+    ///// <summary>
+    ///// Person that modified entity
+    ///// </summary>
+    //public string? ModifiedBy { get; set; }
     /// <summary>
     /// The Status of entity
     /// </summary>

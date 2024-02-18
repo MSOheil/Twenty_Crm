@@ -14,13 +14,13 @@ public interface IBaseEntity
     /// Date of create entity
     /// </summary>
     public DateTime CreateDate { get; set; }
-    /// <summary>
-    /// Date of modified entity
-    /// </summary>
-    public DateTime ModifyDate { get; set; }
-    /// <summary>
-    /// Person that modified entity
-    /// </summary>
-    public string ModifiedBy { get; set; }
+    ///// <summary>
+    ///// Date of modified entity
+    ///// </summary>
+    //public DateTime ModifyDate { get; set; }
+    ///// <summary>
+    ///// Person that modified entity
+    ///// </summary>
+    //public string ModifiedBy { get; set; }
     public BaseEntityStatus BaseStatus { get; set; }
 }

@@ -8,4 +8,8 @@ public enum BaseEntityStatus
     Pending = 2,
     [Display(Name = "فعال")]
     Active = 3,
+    [Display(Name = "ویرایش شده")]
+    Edited = 4,
+    [Display(Name = "غیر فعال شده")]
+    Disabled = 5,
 }

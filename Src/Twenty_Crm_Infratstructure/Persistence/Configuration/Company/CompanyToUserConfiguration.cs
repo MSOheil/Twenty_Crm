@@ -4,8 +4,8 @@ public class CompanyToUserConfiguration : IEntityTypeConfiguration<Twenty_Crm_Do
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.Company.CompanyToUser> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
 
 
         //builder.HasOne(z => z.User)

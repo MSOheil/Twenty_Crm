@@ -4,8 +4,8 @@ public class UserToRoleConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domai
 {
     public void Configure(EntityTypeBuilder<Twenty_Crm_Domain.Entities.User.UserToRole> builder)
     {
-        builder.Property(z => z.CreatedBy).HasMaxLength(140);
-        builder.Property(z => z.ModifiedBy).HasMaxLength(140);
+        
+        
 
 
 
