@@ -82,12 +82,12 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity>
             var entity = await GetByIdAsync(id);
             if (entity is not null)
             {
-                await this.CreateAsync(entity, userName);
+                //await this.CreateAsync(entity, userName);
                 //entity.ModifiedBy = userName;
-                //entity.BaseStatus = BaseEntityStatus.Deleted;
+                entity.BaseStatus = BaseEntityStatus.Deleted;
                 //dbContext.SetDb<TEntity>().Remove(entity);
-                //dbContext.SetDb<TEntity>().Update(entity);
-                //await dbContext.SaveChangesAsync();
+                dbContext.SetDb<TEntity>().Update(entity);
+                await dbContext.SaveChangesAsync();
                 return true;
             }
             return false;

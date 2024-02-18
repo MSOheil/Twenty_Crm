@@ -152,7 +152,7 @@ public class UserService : IUserService
                         Title = t.Title,
                         PhoneNumber = t.TelephoneNumber,
                         PrePhoneNumber = t.PrePhoneNumber,
-                        CityRef = t.CityRef,
+                        StateRef = t.StateRef,
                         UserRef = t.UserRef,
                     }).ToList() : new List<ShowTelephonesDto>(),
                 Groups = b.UserToGroups.Count > 0 ?

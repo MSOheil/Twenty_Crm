@@ -22,6 +22,6 @@ public class TelephoneConfiguration : IEntityTypeConfiguration<Twenty_Crm_Domain
 
         builder.HasOne(b => b.City)
             .WithMany(b => b.Telephones)
-                .HasForeignKey(z => z.CityRef).IsRequired(false).OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(z => z.StateRef).IsRequired(false).OnDelete(DeleteBehavior.NoAction);
     }
 }

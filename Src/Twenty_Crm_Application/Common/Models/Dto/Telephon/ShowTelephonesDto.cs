@@ -6,6 +6,6 @@ public class ShowTelephonesDto
     public string? PhoneNumber { get; set; }
     public string? Title { get; set; }
     public string? PrePhoneNumber { get; set; }
-    public Guid? CityRef { get; set; }
+    public Guid? StateRef { get; set; }
     public Guid? UserRef { get; set; }
 }
