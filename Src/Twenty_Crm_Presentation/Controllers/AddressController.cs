@@ -14,4 +14,9 @@ public class AddressController : BaseController
     {
         return await this.addressService.CreateManyAddressAsyn(userRef, dtos);
     }
+    [HttpPut("{userRef}")]
+    public async Task<ResponseDto<bool>> UpdateMany(Guid userRef, [FromBody] IList<UpdateAddressDto> dtos)
+    { 
+        return await this.addressService.UpsertManyAddressAsync(dtos, userRef);
+    }
 }

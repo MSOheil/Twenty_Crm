@@ -34,6 +34,7 @@ global using Twenty_Crm_Application.Common.Models.Dto.Group;
 global using Twenty_Crm_Application.Common.Models.Dto.PhoneNumber;
 global using Twenty_Crm_Application.Common.Models.Dto.Telephon;
 global using Twenty_Crm_Application.Common.Models.Dto.User;
+global using Twenty_Crm_Application.Common.Models.Dto.UserToGroup;
 global using Twenty_Crm_Application.Common.Models.Dto.Website;
 global using Twenty_Crm_Application.Common.Services.Address;
 global using Twenty_Crm_Application.Common.Services.Bank;

@@ -13,4 +13,9 @@ public class TelephoneController : BaseController
         return await
                this.telephoneService.CreateManayTelephoneAsync(userRef, dto);
     }
+    [HttpPut("{userRef}")]
+    public async Task<ResponseDto<bool>> UpdateMany(Guid userRef, IList<UpdateTelephoneDto> dtos)
+    {
+        return await this.telephoneService.UpsertManyTelephonesAsync(dtos, userRef);
+    }
 }

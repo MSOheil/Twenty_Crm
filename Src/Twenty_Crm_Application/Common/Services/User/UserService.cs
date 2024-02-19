@@ -64,7 +64,7 @@ public class UserService : IUserService
             if (user is not null)
             {
                 user.BaseStatus = BaseEntityStatus.Edited;
-                await this.userRepository.DeleteAsync(id, userActionName); 
+                await this.userRepository.DeleteAsync(id, userActionName);
                 return new ResponseDto<bool>("حذف کاربر با موفقیت انجام شد"
                     , 200, true);
             }
@@ -171,7 +171,6 @@ public class UserService : IUserService
             }).PaginatedListAsync(dto.PageNumber, dto.PageSize);
         return data;
     }
-
     public async Task<ResponseDto<bool>> UpdateUserAsync(Guid userId, UpdateUserDto dto)
     {
         try
@@ -184,13 +183,16 @@ public class UserService : IUserService
             {
                 user.FirstName = dto.FirstName;
                 user.LastName = dto.LastName;
+                user.FatherName = dto.FatherName;
+                user.Gender = dto.Gender;
+                user.CompanyName = dto.CompanyName;
 
 
-
-
-                await this.userRepository.UpdateAsync(user, dto.UserActionName ?? string.Empty);
-
-
+                await this.userRepository.UpdateAsync(user, "" ?? string.Empty);
+                if (dto.GroupList.Count > 0)
+                {
+                    await this.userToGroupService.UpsertUserToGroupAsync(dto.GroupList, userRef: userId);
+                }
                 return new ResponseDto<bool>("ویرایش اطلاعات با موفقیت انجام شد"
                     , 200, true);
             }

@@ -15,8 +15,12 @@ public class PhoneNumberController : BaseController
     public async Task<ResponseDto<bool>> CreateMany(Guid userRef, [FromBody] IList<Twenty_Crm_Application.Common.Models.Dto.PhoneNumber.CreatePhoneNumberDto> dto)
     {
         return await
-               this.phoneNumberService.CreateManyPhoneNumberDtoAsync(userRef,dto);
-
+               this.phoneNumberService.CreateManyPhoneNumberDtoAsync(userRef, dto);
+    }
+    [HttpPut("{userRef}")]
+    public async Task<ResponseDto<bool>> UpdateMany(Guid userRef, [FromBody] IList<UpdatePhoneNumberDto> dtos)
+    {
+        return await this.phoneNumberService.UpsertPhoneNumbersAsync(dtos, userRef);
     }
 }
 
