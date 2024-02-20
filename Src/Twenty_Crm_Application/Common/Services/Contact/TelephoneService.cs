@@ -97,7 +97,7 @@ public class TelephoneService : ITelephoneService
         var newList = new List<CreateTelephoneDto>();
         for (int i = 0; i < dto.Count; i++)
         {
-            if (dto[i].Id == null && dto[i].Id == Guid.Empty)
+            if (dto[i].Id == null || dto[i].Id == Guid.Empty)
             {
                 newList.Add(new CreateTelephoneDto
                 {
@@ -129,7 +129,11 @@ public class TelephoneService : ITelephoneService
         var ids = new List<Guid>();
         for (int i = 0; i < dtos.Count; i++)
         {
-            ids.Add(dtos[i].Id);
+            if (dtos[i].Id != null &&
+                dtos[i].Id != Guid.Empty)
+            {
+                ids.Add(dtos[i].Id);
+            }
         }
         return ids;
     }

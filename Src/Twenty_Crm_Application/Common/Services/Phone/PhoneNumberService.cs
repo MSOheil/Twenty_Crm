@@ -120,7 +120,10 @@ public class PhoneNumberService : IPhoneNumberService
         var newIds = new List<Guid>();
         for (int i = 0; i < dtos.Count; i++)
         {
-            newIds.Add(dtos[i].Id ?? Guid.Empty);
+            if (dtos[i].Id != null && dtos[i].Id != Guid.Empty)
+            {
+                newIds.Add(dtos[i].Id ?? Guid.Empty);
+            }
         }
         return newIds;
     }

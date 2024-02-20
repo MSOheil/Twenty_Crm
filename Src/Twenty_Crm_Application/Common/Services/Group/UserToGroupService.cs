@@ -27,8 +27,7 @@ public class UserToGroupService : IUserToGroupService
                 });
             }
 
-            await this.userToGroupRepo.AddManyAsync(userToGroupList);
-            await this.userToGroupRepo.SaveChangeAsync();
+            await this.userToGroupRepo.AddRangeAsync(userToGroupList);
 
             return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
                 , 200, true);
