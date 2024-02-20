@@ -72,13 +72,13 @@ public class PhoneNumberService : IPhoneNumberService
             await this.phoneNumberRepo.DeleteManyAsync(deletedPhoneNumbers, "");
             // UpdatePhoneNumbers
             var updateNewPhoneNumbers = await this.phoneNumberRepo.GetAll()
-                .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).ToListAsync();
+                .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).AsTracking().ToListAsync();
             this.UpdatePhoneNumbers(updateNewPhoneNumbers, phoneNumbers);
             // CreateNewPhoneNumbers
             var newMobiles = phoneNumbers.Where(s => s.Id == null || s.Id.Equals(Guid.Empty)).ToList();
             var newPhoneNumbers = this.ConvertUpdatePhoneNumbertoCreatePhoneNumber(newMobiles);
-            var responseResult = this.CreateManyPhoneNumberDtoAsync(userRef, newPhoneNumbers);
-
+            var responseResult = await this.CreateManyPhoneNumberDtoAsync(userRef, newPhoneNumbers);
+            await this.phoneNumberRepo.SaveChangeAsync();
             return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
                 , 200, true);
         }

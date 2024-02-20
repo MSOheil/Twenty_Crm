@@ -55,14 +55,13 @@ public class AddressService : IAddressService
             await this.addressRepository.DeleteManyAsync(deleteAddress, "");
             // Update LastAddress
             var updateAddress = await this.addressRepository.GetAll()
-                .Where(f => f.UserRef.Equals(userRef) && ids.Contains(f.Id)).ToListAsync();
+                .Where(f => f.UserRef.Equals(userRef) && ids.Contains(f.Id)).AsTracking().ToListAsync();
             this.UpdateAddress(dtos, updateAddress);
             // CreateNewAddress
             var newAddress = dtos.Where(s => s.Id == null || s.Id.Equals(Guid.Empty)).ToList();
             var newAddressList = this.ConvertUpdateAddressToCreateAddressDtos(newAddress);
-
             await this.CreateManyAddressAsyn(userRef, newAddressList);
-
+            await this.addressRepository.SaveChangeAsync();
             return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
                 , 200, true);
 

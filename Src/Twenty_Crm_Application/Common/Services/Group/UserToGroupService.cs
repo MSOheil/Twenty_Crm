@@ -82,7 +82,7 @@ public class UserToGroupService : IUserToGroupService
             await this.userToGroupRepo.DeleteManyAsync(deletedGroups, "");
             // GetUpdateUserGroups
             var newUserGroups = dtos.Where(s => !allIds.Contains(s)).ToList();
-            this.CreateManyUserToGroupAsync(newUserGroups, userRef);
+        await    this.CreateManyUserToGroupAsync(newUserGroups, userRef);
             return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
                 , 200, true);
         }
