@@ -41,8 +41,7 @@ public class UserController : BaseController
     public async Task DeleteAll()
     {
         var allEntities = await this.userRepository.GetAll().ToListAsync();
-        await this.userRepository.DeleteManyAsync(allEntities, "");
-
+        await this.userRepository.DeleteManyAsync(allEntities, ""); 
     }
 
 }
