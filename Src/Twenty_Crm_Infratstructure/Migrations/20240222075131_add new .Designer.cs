@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Twenty_Crm_Infratstructure.Persistence.Db;
 
@@ -11,9 +12,11 @@ using Twenty_Crm_Infratstructure.Persistence.Db;
 namespace Twenty_Crm_Infratstructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240222075131_add new ")]
+    partial class addnew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -403,7 +406,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Groups");
+                    b.ToTable("GroupLeaders");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.SubGroup", b =>

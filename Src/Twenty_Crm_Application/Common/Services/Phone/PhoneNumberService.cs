@@ -74,6 +74,7 @@ public class PhoneNumberService : IPhoneNumberService
             var updateNewPhoneNumbers = await this.phoneNumberRepo.GetAll()
                 .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).AsTracking().ToListAsync();
             this.UpdatePhoneNumbers(updateNewPhoneNumbers, phoneNumbers);
+            await this.phoneNumberRepo.SaveChangeAsync();
             // CreateNewPhoneNumbers
             var newMobiles = phoneNumbers.Where(s => s.Id == null || s.Id.Equals(Guid.Empty)).ToList();
             var newPhoneNumbers = this.ConvertUpdatePhoneNumbertoCreatePhoneNumber(newMobiles);

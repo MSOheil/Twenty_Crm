@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Twenty_Crm_Infratstructure.Persistence.Db;
 
@@ -11,9 +12,11 @@ using Twenty_Crm_Infratstructure.Persistence.Db;
 namespace Twenty_Crm_Infratstructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240222073419_added test sbref")]
+    partial class addedtestsbref
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -391,10 +394,12 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -403,7 +408,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Groups");
+                    b.ToTable("GroupLeaders");
                 });
 
             modelBuilder.Entity("Twenty_Crm_Domain.Entities.Group.SubGroup", b =>
@@ -447,7 +452,6 @@ namespace Twenty_Crm_Infratstructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("GropuRef")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("UserRef")
@@ -1484,9 +1488,7 @@ namespace Twenty_Crm_Infratstructure.Migrations
                 {
                     b.HasOne("Twenty_Crm_Domain.Entities.Group.Group", "Group")
                         .WithMany("UserToGroups")
-                        .HasForeignKey("GropuRef")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GropuRef");
 
                     b.HasOne("Twenty_Crm_Domain.Entities.User.User", "User")
                         .WithMany("UserToGroups")

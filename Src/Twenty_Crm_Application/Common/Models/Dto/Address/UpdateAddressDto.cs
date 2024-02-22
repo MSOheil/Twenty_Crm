@@ -2,7 +2,7 @@
 
 public class UpdateAddressDto
 {
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     public string? Title { get; set; }
     //public Guid CountryRef { get; private set; }
     //public Guid CountyRef { get; private set; }

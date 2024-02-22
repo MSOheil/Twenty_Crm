@@ -75,6 +75,7 @@ public class TelephoneService : ITelephoneService
             var updateTelephones = await this.telephoneRepository.GetAll()
                 .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).AsTracking().ToListAsync();
             this.UpdateTelephones(dto, updateTelephones);
+            await this.telephoneRepository.SaveChangeAsync();
             // CreateNewTelephons
             var newTelephones = this.ConvertUpdateTelephonesToCreate(dto);
             var telephons = await this.CreateManayTelephoneAsync(userRef, newTelephones);
@@ -119,7 +120,7 @@ public class TelephoneService : ITelephoneService
                 lastTelephones[i].Title = newTelephons.Title;
                 lastTelephones[i].PrePhoneNumber = newTelephons.PrePhoneNumber;
                 lastTelephones[i].TelephoneNumber = newTelephons.PhoneNumber;
-                lastTelephones[i].StateRef = newTelephons.StateRef;
+                lastTelephones[i].SBStateRef = newTelephons.StateRef;
             }
         }
     }

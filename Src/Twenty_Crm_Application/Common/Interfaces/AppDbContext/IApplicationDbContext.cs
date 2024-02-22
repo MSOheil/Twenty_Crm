@@ -15,7 +15,7 @@ public interface IApplicationDbContext
     public DbSet<Mobile> Mobiles { get; }
     public DbSet<Operator> Operators { get; }
     public DbSet<Telephone> Telephones { get; }
-    public DbSet<Group> GroupLeaders { get; }
+    public DbSet<Group> Groups { get; }
     public DbSet<SubGroup> SubGroups { get; }
     public DbSet<InternationalCertificate> InternationalCertificates { get; }
     public DbSet<License> Licenses { get; }

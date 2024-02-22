@@ -11,7 +11,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Mobile> Mobiles => Set<Mobile>();
     public DbSet<Operator> Operators => Set<Operator>();
     public DbSet<Telephone> Telephones => Set<Telephone>();
-    public DbSet<Group> GroupLeaders => Set<Group>();
+    public DbSet<Group> Groups => Set<Group>();
     public DbSet<SubGroup> SubGroups => Set<SubGroup>();
     public DbSet<InternationalCertificate> InternationalCertificates => Set<InternationalCertificate>();
     public DbSet<License> Licenses => Set<License>();

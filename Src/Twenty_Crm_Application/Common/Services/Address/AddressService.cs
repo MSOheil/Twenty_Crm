@@ -57,6 +57,7 @@ public class AddressService : IAddressService
             var updateAddress = await this.addressRepository.GetAll()
                 .Where(f => f.UserRef.Equals(userRef) && ids.Contains(f.Id)).AsTracking().ToListAsync();
             this.UpdateAddress(dtos, updateAddress);
+            await this.addressRepository.SaveChangeAsync();
             // CreateNewAddress
             var newAddress = dtos.Where(s => s.Id == null || s.Id.Equals(Guid.Empty)).ToList();
             var newAddressList = this.ConvertUpdateAddressToCreateAddressDtos(newAddress);
@@ -121,7 +122,10 @@ public class AddressService : IAddressService
         var ids = new List<Guid>();
         for (int i = 0; i < dtos.Count; i++)
         {
-            ids.Add(dtos[i].Id);
+            if (dtos[i].Id != null && dtos[i].Id != Guid.Empty)
+            {
+                ids.Add(dtos[i].Id);
+            }
         }
         return ids;
 

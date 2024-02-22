@@ -7,6 +7,7 @@ public class Telephone : BaseEntity
     public string? TelephoneNumber { get; set; }
     public Guid? OperatorRef { get; set; }
     public Guid? StateRef { get; set; }
+    public Guid? SBStateRef { get; set; }
     public string? PrePhoneNumber { get; set; }
     #endregion
 
