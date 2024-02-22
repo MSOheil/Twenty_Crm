@@ -66,20 +66,26 @@ public class TelephoneService : ITelephoneService
     {
         try
         {
-            var ids = this.TakeIds(dto);
-            //Delete Telephones
-            var deletedTelephones = await this.telephoneRepository.GetAll()
-                 .Where(s => s.UserRef.Equals(userRef) && !ids.Contains(s.Id)).ToListAsync();
-            await this.telephoneRepository.DeleteManyAsync(deletedTelephones, "");
-            // UpdateTelephones
-            var updateTelephones = await this.telephoneRepository.GetAll()
-                .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).AsTracking().ToListAsync();
-            this.UpdateTelephones(dto, updateTelephones);
-            await this.telephoneRepository.SaveChangeAsync();
-            // CreateNewTelephons
-            var newTelephones = this.ConvertUpdateTelephonesToCreate(dto);
-            var telephons = await this.CreateManayTelephoneAsync(userRef, newTelephones);
-            return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
+            if (dto.Count > 0)
+            {
+
+                var ids = this.TakeIds(dto);
+                //Delete Telephones
+                var deletedTelephones = await this.telephoneRepository.GetAll()
+                     .Where(s => s.UserRef.Equals(userRef) && !ids.Contains(s.Id)).ToListAsync();
+                await this.telephoneRepository.DeleteManyAsync(deletedTelephones, "");
+                // UpdateTelephones
+                var updateTelephones = await this.telephoneRepository.GetAll()
+                    .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).AsTracking().ToListAsync();
+                this.UpdateTelephones(dto, updateTelephones);
+                await this.telephoneRepository.SaveChangeAsync();
+                // CreateNewTelephons
+                var newTelephones = this.ConvertUpdateTelephonesToCreate(dto);
+                var telephons = await this.CreateManayTelephoneAsync(userRef, newTelephones);
+                return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
+                    , 200, true);
+            }
+            return new ResponseDto<bool>("آبدیت جدید وجود ندارد"
                 , 200, true);
         }
 

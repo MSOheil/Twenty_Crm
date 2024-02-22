@@ -65,22 +65,27 @@ public class PhoneNumberService : IPhoneNumberService
     {
         try
         {
-            var ids = this.GetIds(phoneNumbers);
-            // DeletedPhoneNumbers
-            var deletedPhoneNumbers = await this.phoneNumberRepo.GetAll()
-                .Where(d => d.UserRef.Equals(userRef) && !ids.Contains(d.Id)).ToListAsync();
-            await this.phoneNumberRepo.DeleteManyAsync(deletedPhoneNumbers, "");
-            // UpdatePhoneNumbers
-            var updateNewPhoneNumbers = await this.phoneNumberRepo.GetAll()
-                .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).AsTracking().ToListAsync();
-            this.UpdatePhoneNumbers(updateNewPhoneNumbers, phoneNumbers);
-            await this.phoneNumberRepo.SaveChangeAsync();
-            // CreateNewPhoneNumbers
-            var newMobiles = phoneNumbers.Where(s => s.Id == null || s.Id.Equals(Guid.Empty)).ToList();
-            var newPhoneNumbers = this.ConvertUpdatePhoneNumbertoCreatePhoneNumber(newMobiles);
-            var responseResult = await this.CreateManyPhoneNumberDtoAsync(userRef, newPhoneNumbers);
-            await this.phoneNumberRepo.SaveChangeAsync();
-            return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
+            if (phoneNumbers.Count > 0)
+            { 
+                var ids = this.GetIds(phoneNumbers);
+                // DeletedPhoneNumbers
+                var deletedPhoneNumbers = await this.phoneNumberRepo.GetAll()
+                    .Where(d => d.UserRef.Equals(userRef) && !ids.Contains(d.Id)).ToListAsync();
+                await this.phoneNumberRepo.DeleteManyAsync(deletedPhoneNumbers, "");
+                // UpdatePhoneNumbers
+                var updateNewPhoneNumbers = await this.phoneNumberRepo.GetAll()
+                    .Where(s => s.UserRef.Equals(userRef) && ids.Contains(s.Id)).AsTracking().ToListAsync();
+                this.UpdatePhoneNumbers(updateNewPhoneNumbers, phoneNumbers);
+                await this.phoneNumberRepo.SaveChangeAsync();
+                // CreateNewPhoneNumbers
+                var newMobiles = phoneNumbers.Where(s => s.Id == null || s.Id.Equals(Guid.Empty)).ToList();
+                var newPhoneNumbers = this.ConvertUpdatePhoneNumbertoCreatePhoneNumber(newMobiles);
+                var responseResult = await this.CreateManyPhoneNumberDtoAsync(userRef, newPhoneNumbers);
+                await this.phoneNumberRepo.SaveChangeAsync();
+                return new ResponseDto<bool>("ثبت اطلاعات با موفقیت انجام شد"
+                    , 200, true);
+            }
+            return new ResponseDto<bool>("هیچ اطلاعاتی برای آبدیت وجود ندارد"
                 , 200, true);
         }
         catch (Exception ex)
