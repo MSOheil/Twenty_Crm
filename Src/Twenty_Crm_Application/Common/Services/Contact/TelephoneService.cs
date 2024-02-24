@@ -23,6 +23,7 @@ public class TelephoneService : ITelephoneService
                     TelephoneNumber = dto[i].PhoneNumber,
                     Title = dto[i].Title,
                     UserRef = userRef,
+                    SBStateRef = dto[i].StateRef,
                 });
             }
             await this.telephoneRepository.AddRangeAsync(telephons);
